@@ -6,6 +6,8 @@ public class Location
 	private String name;
 	private String description;
 	
+	
+	
 	public Location(int ID, String name, String description)
 	{
 		this.ID = ID;
