@@ -3,6 +3,8 @@ package game.controller;
 import java.util.Scanner;
 
 import game.model.Hero;
+import game.model.Location;
+import game.model.World;
 
 public class GameController
 {
@@ -20,6 +22,9 @@ public class GameController
 	private int startingWisdom;
 	
 	Hero hero;
+	World theWorld = World.getWorld();
+	
+	private Location currentLocation;
 	
 	public GameController()
 	{
@@ -55,6 +60,7 @@ public class GameController
 			
 			if(userChoice == 1)
 			{
+				currentLocation = theWorld.getLocation(theWorld.LOCATION_ID_ROOM_START);
 				gameOn = true;
 				menuScreenOn = false;
 			}
@@ -73,9 +79,14 @@ public class GameController
 					+ "(6)View Inventory\n");
 			userChoice = input.nextInt();
 			
-			if(userChoice == 1) 
+			switch(userChoice)
 			{
-				viewStats();
+				case 1:
+					viewStats();
+					break;
+				case 2:
+					System.out.println(currentLocation.getName() + " \n" + currentLocation.getDescription());
+					break;
 			}
 		}
 		

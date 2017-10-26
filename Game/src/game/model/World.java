@@ -22,6 +22,12 @@ public class World
 		
 		//Populate our world
 		populateWeapons();
+		populateLocations();
+	}
+	
+	public static World getWorld()
+	{
+		return theWorld;
 	}
 	
 	public void populateWeapons() 
@@ -41,6 +47,11 @@ public class World
 	public void populateLocations()
 	{
 		//int ID, String name, String description
+		Location roomStart = new Location(LOCATION_ID_ROOM_START, "Damp Dungeon", "A very dark dungeon. Damp and cold. You figure you must be "
+											+ "very deep under the earth.");
+		
+		//Add location to list
+		locations.add(roomStart);
 	}
 	
 	//Search for weapons
@@ -55,6 +66,18 @@ public class World
 		}
 		return null;
 		
+	}
+	
+	public Location getLocation(int locationID)
+	{
+		for(Location location: locations)
+		{
+			if(location.getID() == locationID)
+			{
+				return location;
+			}
+		}
+		return null;
 	}
 	
 }
