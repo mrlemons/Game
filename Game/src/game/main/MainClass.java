@@ -7,7 +7,8 @@ public class MainClass
 
 	public static void main(String[] args)
 	{
-		GameController gameControl = new GameController();test
+		GameController gameControl = new GameController();
+		//testing
 		
 
 	}
