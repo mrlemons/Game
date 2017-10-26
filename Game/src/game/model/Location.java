@@ -6,6 +6,11 @@ public class Location
 	private String name;
 	private String description;
 	
+	private Location locationToTheNorth;
+	private Location locationToTheSouth;
+	private Location locationToTheWest;
+	private Location locationToTheEast;
+	
 	
 	
 	public Location(int ID, String name, String description)
@@ -40,6 +45,47 @@ public class Location
 	{
 		this.description = description;
 	}
+
+	public Location getLocationToTheNorth()
+	{
+		return locationToTheNorth;
+	}
+
+	public void setLocationToTheNorth(Location locationToTheNorth)
+	{
+		this.locationToTheNorth = locationToTheNorth;
+	}
+
+	public Location getLocationToTheSouth()
+	{
+		return locationToTheSouth;
+	}
+
+	public void setLocationToTheSouth(Location locationToTheSouth)
+	{
+		this.locationToTheSouth = locationToTheSouth;
+	}
+
+	public Location getLocationToTheWest()
+	{
+		return locationToTheWest;
+	}
+
+	public void setLocationToTheWest(Location locationToTheWest)
+	{
+		this.locationToTheWest = locationToTheWest;
+	}
+
+	public Location getLocationToTheEast()
+	{
+		return locationToTheEast;
+	}
+
+	public void setLocationToTheEast(Location locationToTheEast)
+	{
+		this.locationToTheEast = locationToTheEast;
+	}
+	
 	
 	
 
