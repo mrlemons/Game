@@ -38,6 +38,11 @@ public class World
 		weapons.add(splinteredStaff);
 	}
 	
+	public void populateLocations()
+	{
+		//int ID, String name, String description
+	}
+	
 	//Search for weapons
 	public Weapon getWeapon(int weaponID)
 	{
