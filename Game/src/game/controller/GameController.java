@@ -3,6 +3,7 @@ package game.controller;
 import java.util.Scanner;
 
 import game.model.Hero;
+import game.model.Inventory;
 import game.model.Location;
 import game.model.World;
 
@@ -22,6 +23,8 @@ public class GameController
 	private int startingWisdom;
 	
 	Hero hero;
+	Inventory inventory;
+	
 	World theWorld = World.getWorld();
 	
 	private Location currentLocation;
@@ -36,6 +39,8 @@ public class GameController
 		
 		hero = new Hero("Link", startingStrength, startingDex, startingVitality,
 						startingIntelligence, startingWisdom);
+		
+		inventory = new Inventory();
 		
 		beginGame();
 	}
@@ -89,6 +94,10 @@ public class GameController
 					break;
 				case 3:
 					move();
+					break;
+				case 6:
+					manageInventory();
+					break;
 			}
 		}
 		
@@ -264,7 +273,19 @@ public class GameController
 			System.out.println("There is another room west of here.");
 		}
 		
+	}
+	
+	public void manageInventory()
+	{
+		boolean makeChoice = true;
+		inventory.addInventory(theWorld.getWeapon(theWorld.WEAPON_ID_RUSTY_SWORD), null);
 		
-		
+		while (makeChoice == true)
+		{
+			System.out.println("Current Inventory: \n");
+			inventory.viewInventory();
+			makeChoice = false;
+			
+		}
 	}
 }
