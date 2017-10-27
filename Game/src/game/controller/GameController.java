@@ -278,13 +278,46 @@ public class GameController
 	public void manageInventory()
 	{
 		boolean makeChoice = true;
-		inventory.addInventory(theWorld.getWeapon(theWorld.WEAPON_ID_RUSTY_SWORD), null);
 		
 		while (makeChoice == true)
 		{
 			System.out.println("Current Inventory: \n");
 			inventory.viewInventory();
-			makeChoice = false;
+			System.out.println("\n");
+			
+			System.out.println("What you like to do?"
+								+ "(1)View Item"
+								+ "(2)Equip"
+								+ "(3)Use Item"
+								+ "(4)Go Back");
+			userChoice = input.nextInt();
+			
+			switch(userChoice)
+			{
+				case 1:
+					System.out.println("Which item?");
+					userChoice = input.nextInt();
+					
+					switch(userChoice)
+					{
+						case 1:
+							
+							break;
+						case 2:
+							break;
+						case 3:
+							break;
+						case 4:
+							break;
+						case 5:
+							break;
+						case 6:
+							break;
+						default:
+							break;
+					}
+					
+			}
 			
 		}
 	}

@@ -7,6 +7,8 @@ public class Inventory
 	private int inventorySlotsTaken;
 	private int maxInventorySlots;
 	
+	
+	
 	ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 	ArrayList<Armor> armors = new ArrayList<Armor>();
 	
@@ -31,11 +33,19 @@ public class Inventory
 	
 	public void viewInventory() 
 	{
+		int numberChoice = 1;
+		
+		if(inventorySlotsTaken == 0)
+		{
+			System.out.println("Nothing here");
+		}
 		for(Weapon weapon: weapons)
 		{
-			System.out.println(weapon.getName());
+			System.out.println("(" + numberChoice + ")" + weapon.getName());
+			numberChoice +=1;
 		}
 	}
+	
 	
 	
 }
