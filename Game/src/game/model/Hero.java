@@ -9,6 +9,7 @@ public class Hero
 	private int intelligence;
 	private int wisdom;
 	
+	
 	public Hero(String name, int strength, int dex, int vitality, 
 					int intelligence, int wisdom)
 	{

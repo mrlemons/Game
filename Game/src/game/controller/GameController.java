@@ -85,7 +85,7 @@ public class GameController
 					viewStats();
 					break;
 				case 2:
-					System.out.println(currentLocation.getName() + " \n" + currentLocation.getDescription());
+					lookAround();
 					break;
 				case 3:
 					move();
@@ -143,28 +143,29 @@ public class GameController
 		{
 			if(locationToTheNorth == true)
 			{
-				System.out.println("(" + i + ")" + "Go North");
+				System.out.println("(" + i + ")" + "Go North" + " (" + currentLocation.getLocationToTheNorth().getName() + ")");
 				i++;
 			}
 			if(locationToTheSouth == true)
 			{
-				System.out.println("(" + i + ")" + "Go South");
+				System.out.println("(" + i + ")" + "Go South" + " (" + currentLocation.getLocationToTheSouth().getName() + ")");
 				i++;
 			}
 			if(locationToTheEast == true)
 			{
-				System.out.println("(" + i + ")" + "Go East");
+				System.out.println("(" + i + ")" + "Go East" + " (" + currentLocation.getLocationToTheEast().getName() + ")");
 				i++;
 			}
 			if(locationToTheWest == true)
 			{
-				System.out.println("(" + i + ")" + "Go West");
+				System.out.println("(" + i + ")" + "Go West" + " (" + currentLocation.getLocationToTheWest().getName() + ")");
 				i++;
 			}
 			i = 5;
 			
 		}
 		
+		System.out.println("(5)Stay here");
 		userChoice = input.nextInt();
 		makeChoice = true;
 		
@@ -228,6 +229,10 @@ public class GameController
 					makeChoice = false;
 					break;
 					
+				case 5:
+					makeChoice = false;
+					break;
+					
 				default:
 					System.out.println("Please make a valid choice");
 					makeChoice = true;
@@ -235,5 +240,31 @@ public class GameController
 			}
 		}
 		System.out.println("You traveled to: " + currentLocation.getName());
+	}
+	
+	public void lookAround()
+	{
+		System.out.println(currentLocation.getName() + " \n" + currentLocation.getDescription() + "\n");
+		
+		//Determine if there is any paths that can be taken
+		if(currentLocation.getLocationToTheNorth() != null)
+		{
+			System.out.println("There is another room north of here.");
+		}
+		if(currentLocation.getLocationToTheSouth() != null)
+		{
+			System.out.println("There is another room south of here.");
+		}
+		if(currentLocation.getLocationToTheEast() != null)
+		{
+			System.out.println("There is another room east of here.");
+		}
+		if(currentLocation.getLocationToTheWest() !=null)
+		{
+			System.out.println("There is another room west of here.");
+		}
+		
+		
+		
 	}
 }

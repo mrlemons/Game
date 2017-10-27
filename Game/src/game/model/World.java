@@ -17,6 +17,7 @@ public class World
 	//Location ID's
 	public final int LOCATION_ID_ROOM_START = 1;
 	public final int LOCATION_ID_SOUTH_ROOM_FLOOR_ONE = 2;
+	public final int LOCATION_ID_WEST_ROOM_FLOOR_ONE = 3;
 	
 	public World() 
 	{
@@ -53,6 +54,8 @@ public class World
 											+ "very deep under the earth.");
 		Location southRoomFloorOne = new Location(LOCATION_ID_SOUTH_ROOM_FLOOR_ONE, "South Room", "This room is dark however, you see a pile of bones and what you think maybe be something made of iron in the corner.");
 		
+		Location westRoomFloorOne = new Location(LOCATION_ID_WEST_ROOM_FLOOR_ONE, "West Room", "This room is lit with a single torch. In the middle of the floor you make out what looks like an old bow and a quiver of arrows");
+		
 		//Set all reachable locations
 		roomStart.setLocationToTheNorth(null);
 		roomStart.setLocationToTheSouth(southRoomFloorOne);
@@ -61,12 +64,19 @@ public class World
 		
 		southRoomFloorOne.setLocationToTheNorth(roomStart);
 		southRoomFloorOne.setLocationToTheSouth(null);
-		southRoomFloorOne.setLocationToTheWest(null);
+		southRoomFloorOne.setLocationToTheWest(westRoomFloorOne);
 		southRoomFloorOne.setLocationToTheEast(null);
+		
+		westRoomFloorOne.setLocationToTheNorth(null);
+		westRoomFloorOne.setLocationToTheSouth(null);
+		westRoomFloorOne.setLocationToTheWest(null);
+		westRoomFloorOne.setLocationToTheEast(southRoomFloorOne);
+		
 		
 		//Add location to list
 		locations.add(roomStart);
 		locations.add(southRoomFloorOne);
+		locations.add(westRoomFloorOne);
 		
 		
 	}
