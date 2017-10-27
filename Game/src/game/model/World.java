@@ -59,6 +59,10 @@ public class World
 		roomStart.setLocationToTheWest(null);
 		roomStart.setLocationToTheEast(null);
 		
+		northRoomFloorOne.setLocationToTheNorth(null);
+		northRoomFloorOne.setLocationToTheSouth(roomStart);
+		northRoomFloorOne.setLocationToTheWest(null);
+		northRoomFloorOne.setLocationToTheEast(null);
 		
 		//Add location to list
 		locations.add(roomStart);

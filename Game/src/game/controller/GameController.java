@@ -87,6 +87,8 @@ public class GameController
 				case 2:
 					System.out.println(currentLocation.getName() + " \n" + currentLocation.getDescription());
 					break;
+				case 3:
+					move();
 			}
 		}
 		
@@ -102,5 +104,136 @@ public class GameController
 		System.out.println("Vitality: " + hero.getVitality());
 		System.out.println("Intelligence: " + hero.getIntelligence());
 		System.out.println("Wisdom: " + hero.getWisdom());
+	}
+	
+	public void move()
+	{
+		boolean locationToTheNorth = false;
+		boolean locationToTheSouth = false;
+		boolean locationToTheEast = false;
+		boolean locationToTheWest = false;
+		
+		boolean makeChoice = false;
+		
+		//Determine if there is any paths that can be taken
+		if(currentLocation.getLocationToTheNorth() != null)
+		{
+			System.out.println("You may travel north");
+			locationToTheNorth = true;
+		}
+		if(currentLocation.getLocationToTheSouth() != null)
+		{
+			System.out.println("You may travel south");
+			locationToTheSouth = true;
+		}
+		if(currentLocation.getLocationToTheEast() != null)
+		{
+			System.out.println("You may travel east.");
+			locationToTheEast = true;
+		}
+		if(currentLocation.getLocationToTheWest() !=null)
+		{
+			System.out.println("You may travel west");
+			locationToTheWest = true;
+		}
+		
+		System.out.println("\n");
+		
+		for(int i=1; i < 4; i++)
+		{
+			if(locationToTheNorth == true)
+			{
+				System.out.println("(" + i + ")" + "Go North");
+				i++;
+			}
+			if(locationToTheSouth == true)
+			{
+				System.out.println("(" + i + ")" + "Go South");
+				i++;
+			}
+			if(locationToTheEast == true)
+			{
+				System.out.println("(" + i + ")" + "Go East");
+				i++;
+			}
+			if(locationToTheWest == true)
+			{
+				System.out.println("(" + i + ")" + "Go West");
+				i++;
+			}
+			i = 5;
+			
+		}
+		
+		userChoice = input.nextInt();
+		makeChoice = true;
+		
+		while(makeChoice == true)
+		{
+			switch(userChoice) 
+			{
+				case 1:
+					if(locationToTheNorth == true)
+					{
+						currentLocation = currentLocation.getLocationToTheNorth();
+					}
+					else if(locationToTheSouth == true)
+					{
+						currentLocation = currentLocation.getLocationToTheSouth();
+					}
+					else if(locationToTheEast == true)
+					{
+						currentLocation = currentLocation.getLocationToTheEast();
+					}
+					else if(locationToTheWest == true)
+					{
+						currentLocation = currentLocation.getLocationToTheWest();
+					}
+					makeChoice = false;
+					break;
+					
+				case 2:
+					if(locationToTheSouth == true)
+					{
+						currentLocation = currentLocation.getLocationToTheSouth();
+					}
+					else if(locationToTheEast == true)
+					{
+						currentLocation = currentLocation.getLocationToTheEast();
+					}
+					else if(locationToTheWest == true)
+					{
+						currentLocation = currentLocation.getLocationToTheWest();
+					}
+					makeChoice = false;
+					break;
+					
+				case 3:
+					if(locationToTheEast == true)
+					{
+						currentLocation = currentLocation.getLocationToTheEast();
+					}
+					else if(locationToTheWest == true)
+					{
+						currentLocation = currentLocation.getLocationToTheWest();
+					}
+					makeChoice = false;
+					break;
+				
+				case 4:
+					if(locationToTheWest == true)
+					{
+						currentLocation = currentLocation.getLocationToTheWest();
+					}
+					makeChoice = false;
+					break;
+					
+				default:
+					System.out.println("Please make a valid choice");
+					makeChoice = true;
+					break;
+			}
+		}
+		System.out.println("You traveled to: " + currentLocation.getName());
 	}
 }
