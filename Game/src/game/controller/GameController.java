@@ -16,7 +16,11 @@ public class GameController
 		MOVE(3),
 		REST(4),
 		EAT(5),
-		INVENTORY(6);
+		INVENTORY(6),
+			VIEWITEM(1),
+			EQUIP(2),
+			USEITEM(3),
+			GOBACK(4);
 		
 		private int menuNumber;
 		
@@ -126,17 +130,21 @@ public class GameController
 		
 		
 		//Control the menu state
-		if(userChoice == menu.VIEWSTATS.getMenuNumber())
+		if(userChoice == MENU.VIEWSTATS.getMenuNumber())
 		{
 			viewStats();
 		}
-		if(userChoice == menu.LOOKAROUND.getMenuNumber())
+		if(userChoice == MENU.LOOKAROUND.getMenuNumber())
 		{
 			lookAround();
 		}
-		if(userChoice == menu.MOVE.getMenuNumber()) 
+		if(userChoice == MENU.MOVE.getMenuNumber()) 
 		{
 			move();
+		}
+		if(userChoice == MENU.INVENTORY.getMenuNumber())
+		{
+			manageInventory();
 		}
 		else 
 		{
@@ -324,39 +332,22 @@ public class GameController
 			inventory.viewInventory();
 			System.out.println("\n");
 			
-			System.out.println("What you like to do?"
-								+ "(1)View Item"
-								+ "(2)Equip"
-								+ "(3)Use Item"
-								+ "(4)Go Back");
+			System.out.println("What you like to do? "
+								+ "(1)View Item "
+								+ "(2)Equip "
+								+ "(3)Use Item "
+								+ "(4)Go Back ");
 			userChoice = input.nextInt();
 			
-			switch(userChoice)
+			System.out.println("Choose an option: ");
+			
+			if(userChoice == MENU.VIEWITEM.getMenuNumber())
 			{
-				case 1:
-					System.out.println("Which item?");
-					userChoice = input.nextInt();
-					
-					switch(userChoice)
-					{
-						case 1:
-							break;
-						case 2:
-							break;
-						case 3:
-							break;
-						case 4:
-							break;
-						case 5:
-							break;
-						case 6:
-							break;
-						default:
-							break;
-					}
+				System.out.println("Works");
+			}
 					
 			}
 			
 		}
 	}
-}
+

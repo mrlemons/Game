@@ -12,6 +12,8 @@ public class Inventory
 	ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 	ArrayList<Armor> armors = new ArrayList<Armor>();
 	
+	private int slotOne;
+	
 	public Inventory()
 	{
 		inventorySlotsTaken = 0;
@@ -20,9 +22,11 @@ public class Inventory
 	
 	public void addInventory(Weapon weapon, Armor armor)
 	{
+		int currentSlot = inventorySlotsTaken + 1;
 		if(weapon != null && inventorySlotsTaken <= maxInventorySlots )
 		{
 			weapons.add(weapon);
+			slotOne = weapon.getID()
 			inventorySlotsTaken += 1;
 		}
 		else

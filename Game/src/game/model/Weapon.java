@@ -5,6 +5,7 @@ public class Weapon
 	private int ID;
 	private String name;
 	private String description;
+	private String itemType;
 	private int modifier;
 	
 	public Weapon(int ID, String name, String description, int modifier)
@@ -13,6 +14,8 @@ public class Weapon
 		this.name = name;
 		this.description = description;
 		this.modifier = modifier;
+		
+		itemType = "weapon";
 	}
 	
 	public int getID()
