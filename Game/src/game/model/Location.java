@@ -1,5 +1,7 @@
 package game.model;
 
+import java.util.ArrayList;
+
 public class Location
 {
 	private int ID;
@@ -10,6 +12,9 @@ public class Location
 	private Location locationToTheSouth;
 	private Location locationToTheWest;
 	private Location locationToTheEast;
+	
+	ArrayList<Weapon> weaponsHere = new ArrayList<Weapon>();
+	ArrayList<Armor> armorsHere = new ArrayList<Armor>();
 	
 	
 	
@@ -85,7 +90,34 @@ public class Location
 	{
 		this.locationToTheEast = locationToTheEast;
 	}
+
+	public void addWeaponHere(Weapon weapon)
+	{
+		weaponsHere.add(weapon);
+	}
 	
+	public Weapon getWeaponsHere()
+	{
+		for(Weapon weapon: weaponsHere)
+		{
+			return weapon;
+		}
+		return null;
+	}
+	
+	public void addArmorHere(Armor armor)
+	{
+		armorsHere.add(armor);
+	}
+	
+	public Armor getArmorsHere()
+	{
+		for(Armor armor : armorsHere)
+		{
+			return armor;
+		}
+		return null;
+	}
 	
 	
 

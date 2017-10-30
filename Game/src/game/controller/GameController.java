@@ -13,6 +13,7 @@ public class GameController
 	{
 		VIEWSTATS(1),
 		LOOKAROUND(2),
+			PICKUPITEM(1),
 		MOVE(3),
 		REST(4),
 		EAT(5),
@@ -21,7 +22,7 @@ public class GameController
 			EQUIP(2),
 			USEITEM(3),
 			REMOVEITEM(4),
-			GOBACK(5);
+		GOBACK(9);
 		
 		private int menuNumber;
 		
@@ -147,10 +148,7 @@ public class GameController
 		{
 			manageInventory();
 		}
-		else 
-		{
-			System.out.println("Not a valid choice");
-		}
+		
 	}
 	
 	public void viewStats() 
@@ -301,6 +299,8 @@ public class GameController
 	
 	public void lookAround()
 	{
+		boolean lookingAround = true;
+		
 		System.out.println(currentLocation.getName() + " \n" + currentLocation.getDescription() + "\n");
 		
 		//Determine if there is any paths that can be taken
@@ -321,17 +321,33 @@ public class GameController
 			System.out.println("There is another room west of here.");
 		}
 		
+		System.out.println("\n");
+		
+		while(lookingAround == true)
+		{
+			System.out.println("What would you like to do?");
+			userChoice = input.nextInt();
+			
+			if(userChoice == MENU.PICKUPITEM.getMenuNumber())
+			{
+				
+			}
+		}
+		
 	}
 	
 	public void manageInventory()
 	{
 		boolean makeChoice = true;
+		/*
 		inventory.addInventory(theWorld.getWeapon(theWorld.WEAPON_ID_RUSTY_SWORD), null);
 		inventory.addInventory(null, theWorld.getArmor(theWorld.ARMOR_ID_IRON_ARMOR));
 		inventory.addInventory(theWorld.getWeapon(theWorld.WEAPON_ID_OLD_BOW), null);
+		*/
 		
 		while (makeChoice == true)
 		{
+			userChoice = 1;
 			System.out.println("Current Inventory: \n");
 			inventory.viewInventory();
 			System.out.println("\n");
@@ -353,14 +369,15 @@ public class GameController
 			}
 			if(userChoice == MENU.REMOVEITEM.getMenuNumber())
 			{
+				userChoice = 0;
 				System.out.println("Remove which item?");
 				userChoice = input.nextInt();
 				inventory.removeItem(userChoice);
 			}
 			
 					
-			}
+			
 			
 		}
 	}
-
+}

@@ -49,29 +49,31 @@ public class Inventory
 	//View our inventory
 	public void viewInventory() 
 	{
-		int numberChoice = 1;
+		
+		
+		for(int numberChoice = 0; numberChoice < 5; numberChoice++)
+		{
+			if(getWeapon(slot[numberChoice]) != null)
+			{
+				System.out.println("(" + numberChoice + ")" + getWeapon(slot[numberChoice]).getName());
+				numberChoice += 1;
+			}
+			if(getArmor(slot[numberChoice]) != null)
+			{
+				System.out.println("(" + numberChoice + ")" + getArmor(slot[numberChoice]).getName());
+			}
+		}
 		
 		
 		if(inventorySlotsTaken == 0)
 		{
 			System.out.println("Nothing here");
 		}
-		for(Weapon weapon: weapons)
-		{
-			System.out.println("(" + numberChoice + ")" + weapon.getName());
-			numberChoice +=1;
-		}
-		for(Armor armor: armors)
-		{
-			System.out.println("(" + numberChoice + ")" + armor.getName());
-			numberChoice +=1;
-		}
 	}
 	
 	//Select an item
 	public void selectItem(int choice)
 	{
-		choice = choice - 1;
 		
 		if(getWeapon(slot[choice]) != null)
 		{
@@ -89,18 +91,21 @@ public class Inventory
 	
 	public void removeItem(int choice)
 	{
-		choice = choice - 1;
+		
 		
 		if(getWeapon(slot[choice]) != null)
 		{
 			weapons.remove(getWeapon(slot[choice]));
 			slot[choice] = 0;
-			currentSlot -= 1;
+			inventorySlotsTaken -= 1;
+			
 		}
 		else if(getArmor(slot[choice]) != null)
 		{
 			armors.remove(getArmor(slot[choice]));
 			slot[choice] = 0;
+			inventorySlotsTaken -= 1;
+			
 		}
 	}
 	
