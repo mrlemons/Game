@@ -9,6 +9,29 @@ import game.model.World;
 
 public class GameController
 {
+	public enum MENU
+	{
+		VIEWSTATS(1),
+		LOOKAROUND(2),
+		MOVE(3),
+		REST(4),
+		EAT(5),
+		INVENTORY(6);
+		
+		private int menuNumber;
+		
+		private MENU(int number)
+		{
+			this.menuNumber = number;
+		}
+		
+		public int getMenuNumber()
+		{
+			return menuNumber;
+		}
+
+	}
+	
 	Scanner input = new Scanner(System.in);
 	
 	private String heroName;
@@ -24,10 +47,17 @@ public class GameController
 	
 	Hero hero;
 	Inventory inventory;
+	MENU menu;
 	
 	World theWorld = World.getWorld();
 	
 	private Location currentLocation;
+	
+	public GameController(MENU menu) 
+	{
+		this.menu = menu;
+	}
+	
 	
 	public GameController()
 	{
@@ -68,41 +98,50 @@ public class GameController
 				currentLocation = theWorld.getLocation(theWorld.LOCATION_ID_ROOM_START);
 				gameOn = true;
 				menuScreenOn = false;
+				
 			}
 		}
 		
 		//The main game
 		while (gameOn = true)
 		{
-			System.out.println("\n"
-					+ "Make a choice:\n"
-					+ "(1)View Stats\n"
-					+ "(2)Look Around\n"
-					+ "(3)Move\n"
-					+ "(4)Rest\n"
-					+ "(5)Eat\n"
-					+ "(6)View Inventory\n");
-			userChoice = input.nextInt();
-			
-			switch(userChoice)
-			{
-				case 1:
-					viewStats();
-					break;
-				case 2:
-					lookAround();
-					break;
-				case 3:
-					move();
-					break;
-				case 6:
-					manageInventory();
-					break;
-			}
+			setMenuState();
 		}
 		
 		
 
+	}
+	
+	public void setMenuState()
+	{
+		System.out.println("\n"
+				+ "Make a choice:\n"
+				+ "(1)View Stats\n"
+				+ "(2)Look Around\n"
+				+ "(3)Move\n"
+				+ "(4)Rest\n"
+				+ "(5)Eat\n"
+				+ "(6)View Inventory\n");
+		userChoice = input.nextInt();
+		
+		
+		//Control the menu state
+		if(userChoice == menu.VIEWSTATS.getMenuNumber())
+		{
+			viewStats();
+		}
+		if(userChoice == menu.LOOKAROUND.getMenuNumber())
+		{
+			lookAround();
+		}
+		if(userChoice == menu.MOVE.getMenuNumber()) 
+		{
+			move();
+		}
+		else 
+		{
+			System.out.println("Not a valid choice");
+		}
 	}
 	
 	public void viewStats() 
