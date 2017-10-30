@@ -97,6 +97,11 @@ public class Inventory
 			slot[choice] = 0;
 			currentSlot -= 1;
 		}
+		else if(getArmor(slot[choice]) != null)
+		{
+			armors.remove(getArmor(slot[choice]));
+			slot[choice] = 0;
+		}
 	}
 	
 	
