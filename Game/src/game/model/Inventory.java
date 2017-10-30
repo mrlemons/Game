@@ -24,6 +24,7 @@ public class Inventory
 		currentSlot = 0;
 	}
 	
+	//Add to our inventory
 	public void addInventory(Weapon weapon, Armor armor)
 	{
 		int currentSlot = inventorySlotsTaken;
@@ -45,6 +46,7 @@ public class Inventory
 		}
 	}
 	
+	//View our inventory
 	public void viewInventory() 
 	{
 		int numberChoice = 1;
@@ -66,6 +68,7 @@ public class Inventory
 		}
 	}
 	
+	//Select an item
 	public void selectItem(int choice)
 	{
 		choice = choice - 1;
@@ -81,6 +84,18 @@ public class Inventory
 			System.out.println("\n"
 					+ "Name: " + getArmor(slot[choice]).getName() + "\n"
 					+ "Description: " + getArmor(slot[choice]).getDescription() + "\n");
+		}
+	}
+	
+	public void removeItem(int choice)
+	{
+		choice = choice - 1;
+		
+		if(getWeapon(slot[choice]) != null)
+		{
+			weapons.remove(getWeapon(slot[choice]));
+			slot[choice] = 0;
+			currentSlot -= 1;
 		}
 	}
 	

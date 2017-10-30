@@ -20,7 +20,8 @@ public class GameController
 			VIEWITEM(1),
 			EQUIP(2),
 			USEITEM(3),
-			GOBACK(4);
+			REMOVEITEM(4),
+			GOBACK(5);
 		
 		private int menuNumber;
 		
@@ -339,7 +340,8 @@ public class GameController
 								+ "(1)View Item "
 								+ "(2)Equip "
 								+ "(3)Use Item "
-								+ "(4)Go Back ");
+								+ "(4)Remove Item"
+								+ "(5)Go Back ");
 			userChoice = input.nextInt();
 			
 			
@@ -348,6 +350,12 @@ public class GameController
 				System.out.println("Which item would you like to view?");
 				userChoice = input.nextInt();
 				inventory.selectItem(userChoice);
+			}
+			if(userChoice == MENU.REMOVEITEM.getMenuNumber())
+			{
+				System.out.println("Remove which item?");
+				userChoice = input.nextInt();
+				inventory.removeItem(userChoice);
 			}
 			
 					
