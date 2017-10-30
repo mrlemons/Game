@@ -325,6 +325,9 @@ public class GameController
 	public void manageInventory()
 	{
 		boolean makeChoice = true;
+		inventory.addInventory(theWorld.getWeapon(theWorld.WEAPON_ID_RUSTY_SWORD), null);
+		inventory.addInventory(null, theWorld.getArmor(theWorld.ARMOR_ID_IRON_ARMOR));
+		inventory.addInventory(theWorld.getWeapon(theWorld.WEAPON_ID_OLD_BOW), null);
 		
 		while (makeChoice == true)
 		{
@@ -339,12 +342,14 @@ public class GameController
 								+ "(4)Go Back ");
 			userChoice = input.nextInt();
 			
-			System.out.println("Choose an option: ");
 			
 			if(userChoice == MENU.VIEWITEM.getMenuNumber())
 			{
-				System.out.println("Works");
+				System.out.println("Which item would you like to view?");
+				userChoice = input.nextInt();
+				inventory.selectItem(userChoice);
 			}
+			
 					
 			}
 			

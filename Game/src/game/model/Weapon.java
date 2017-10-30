@@ -45,7 +45,14 @@ public class Weapon
 	public int getModifier()
 	{
 		return modifier;
+	}
+
+	public String getItemType()
+	{
+		return itemType;
 	} 
+	
+	
 	
 	
 }

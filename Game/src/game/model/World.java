@@ -7,17 +7,23 @@ public class World
 	private static World theWorld = new World();
 	
 	ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+	ArrayList<Armor> armors = new ArrayList<Armor>();
 	ArrayList<Location> locations = new ArrayList<Location>();
 	
-	//Weapon ID's
+	//Weapon ID's 1 - 200
 	public final int WEAPON_ID_RUSTY_SWORD = 1;
 	public final int WEAPON_ID_OLD_BOW = 2;
 	public final int WEAPON_ID_SPLINTERED_STAFF = 3;
 	
-	//Location ID's
-	public final int LOCATION_ID_ROOM_START = 1;
-	public final int LOCATION_ID_SOUTH_ROOM_FLOOR_ONE = 2;
-	public final int LOCATION_ID_WEST_ROOM_FLOOR_ONE = 3;
+	//Armor ID's 201 - 300
+	public final int ARMOR_ID_IRON_ARMOR = 201;
+	
+	//Item ID's 301 - 400
+	
+	//Location ID's 401 - 500
+	public final int LOCATION_ID_ROOM_START = 401;
+	public final int LOCATION_ID_SOUTH_ROOM_FLOOR_ONE = 402;
+	public final int LOCATION_ID_WEST_ROOM_FLOOR_ONE = 403;
 	
 	public World() 
 	{
@@ -25,6 +31,7 @@ public class World
 		
 		//Populate our world
 		populateWeapons();
+		populateArmors();
 		populateLocations();
 	}
 	
@@ -45,6 +52,17 @@ public class World
 		weapons.add(rustySword);
 		weapons.add(oldBow);
 		weapons.add(splinteredStaff);
+	}
+	
+	public void populateArmors()
+	{
+		//int ID, String name, String description, int modifier
+		
+		Armor ironArmor = new Armor(ARMOR_ID_IRON_ARMOR, "Iron Armor", "A set of iron armor once worn by a forgotten knight", 1);
+		
+		//Add the armor to our armor list
+		armors.add(ironArmor);
+		
 	}
 	
 	public void populateLocations()
@@ -95,6 +113,20 @@ public class World
 		
 	}
 	
+	//Search for armor
+	public Armor getArmor(int armorID)
+	{
+		for(Armor armor: armors)
+		{
+			if(armor.getID() == armorID)
+			{
+				return armor;
+			}
+		}
+		return null;
+	}
+	
+	//Search for locations
 	public Location getLocation(int locationID)
 	{
 		for(Location location: locations)
