@@ -13,9 +13,11 @@ public class Location
 	private Location locationToTheWest;
 	private Location locationToTheEast;
 	
+	
+	
 	ArrayList<Weapon> weaponsHere = new ArrayList<Weapon>();
 	ArrayList<Armor> armorsHere = new ArrayList<Armor>();
-	
+	ArrayList<Integer> itemsHere = new ArrayList<Integer>();
 	
 	
 	public Location(int ID, String name, String description)
@@ -90,34 +92,63 @@ public class Location
 	{
 		this.locationToTheEast = locationToTheEast;
 	}
-
+	
 	public void addWeaponHere(Weapon weapon)
 	{
+		itemsHere.add(weapon.getID());
 		weaponsHere.add(weapon);
-	}
-	
-	public Weapon getWeaponsHere()
-	{
-		for(Weapon weapon: weaponsHere)
-		{
-			return weapon;
-		}
-		return null;
+		
 	}
 	
 	public void addArmorHere(Armor armor)
 	{
+		itemsHere.add(armor.getID());
 		armorsHere.add(armor);
 	}
 	
-	public Armor getArmorsHere()
+	public Weapon getWeaponsHere(int weaponID)
 	{
-		for(Armor armor : armorsHere)
+		for(Weapon weapon : weaponsHere)
 		{
-			return armor;
+			if(weapon.getID() == weaponID)
+			{
+				return weapon;
+			}
 		}
 		return null;
 	}
+	
+	public void showAllItemsHere()
+	{
+		int itemNumber = 0;
+		if(getItemsHere() != null)
+		{
+			System.out.println("You see: \n");
+		}
+		for(Integer item : itemsHere)
+		{
+			
+			if(item.equals(getWeaponsHere(item).getID()))
+			{
+				
+				System.out.println("(" + itemNumber + ")" + getWeaponsHere(item).getName());
+			}
+		}
+		
+	}
+	
+	public Integer getItemsHere()
+	{
+		for(Integer item : itemsHere)
+		{
+			return ID;
+		}
+		return null;
+	}
+
+
+	
+
 	
 	
 

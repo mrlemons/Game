@@ -322,6 +322,7 @@ public class GameController
 		}
 		
 		System.out.println("\n");
+		currentLocation.showAllItemsHere();
 		
 		while(lookingAround == true)
 		{
