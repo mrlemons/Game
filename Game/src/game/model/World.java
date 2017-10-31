@@ -10,6 +10,8 @@ public class World
 	ArrayList<Armor> armors = new ArrayList<Armor>();
 	ArrayList<Location> locations = new ArrayList<Location>();
 	
+	
+	
 	//Weapon ID's 1 - 200
 	public final int WEAPON_ID_RUSTY_SWORD = 1;
 	public final int WEAPON_ID_OLD_BOW = 2;
@@ -92,6 +94,7 @@ public class World
 		
 		//Add any weapons to location
 		roomStart.addWeaponHere(getWeapon(WEAPON_ID_RUSTY_SWORD));
+		roomStart.addWeaponHere(getWeapon(WEAPON_ID_OLD_BOW));
 		
 		
 		

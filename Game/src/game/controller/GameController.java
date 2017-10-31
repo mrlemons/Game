@@ -326,12 +326,18 @@ public class GameController
 		
 		while(lookingAround == true)
 		{
-			System.out.println("What would you like to do?");
+			System.out.println("What would you like to do?\n"
+								+ "\n"
+								+ "(1)Pick Up Item "
+								+ "(9)Go Back \n");
 			userChoice = input.nextInt();
 			
 			if(userChoice == MENU.PICKUPITEM.getMenuNumber())
 			{
-				
+				System.out.println("Which Item?\n");
+				userChoice = input.nextInt();
+				currentLocation.pickUpItem(userChoice);
+				currentLocation.showAllItemsHere();
 			}
 		}
 		

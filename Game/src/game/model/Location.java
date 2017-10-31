@@ -118,34 +118,68 @@ public class Location
 		return null;
 	}
 	
-	public void showAllItemsHere()
+	public Armor getArmorsHere(int armorID)
 	{
-		int itemNumber = 0;
-		if(getItemsHere() != null)
+		for(Armor armor : armorsHere)
 		{
-			System.out.println("You see: \n");
-		}
-		for(Integer item : itemsHere)
-		{
-			
-			if(item.equals(getWeaponsHere(item).getID()))
+			if(armor.getID() == armorID)
 			{
-				
-				System.out.println("(" + itemNumber + ")" + getWeaponsHere(item).getName());
+				return armor;
 			}
-		}
-		
-	}
-	
-	public Integer getItemsHere()
-	{
-		for(Integer item : itemsHere)
-		{
-			return ID;
 		}
 		return null;
 	}
+	
+	public void showAllItemsHere()
+	{
+		
+		int itemNumber = 0;
+		
+		if(itemsHere.isEmpty())
+		{
+			System.out.println("Nothing here...");
+		}
+		else
+		{
+			for(Integer item : itemsHere)
+			{
+				System.out.println("(" + itemNumber + ")" + getWeaponsHere(item).getName());
+				itemNumber += 1;	
+			}
+		}
+	}
+	
 
+	
+	public int pickUpItem(int choice)
+	{
+		Integer[] itemPosition = new Integer[itemsHere.size()];
+		itemPosition = itemsHere.toArray(itemPosition);
+		int itemID = 0;
+		
+		try 
+		{
+			if(getWeaponsHere(itemPosition[choice]) != null)
+			{
+				System.out.println("You picked up a " + getWeaponsHere(itemPosition[choice]).getName() + "\n");
+				itemID = getWeaponsHere(itemPosition[choice]).getID();
+				//itemsHere.remove(itemID);
+				weaponsHere.remove(getWeaponsHere(itemPosition[choice]));
+				
+			}
+			else if(getArmorsHere(itemPosition[choice]) != null)
+			{
+				
+			}
+			
+			
+		}
+		catch(IndexOutOfBoundsException e)
+		{
+			System.out.println("Invalid choice");
+		}
+		return itemID;
+	}
 
 	
 
