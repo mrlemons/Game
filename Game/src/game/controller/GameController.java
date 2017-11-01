@@ -336,7 +336,7 @@ public class GameController
 			{
 				System.out.println("Which Item?\n");
 				userChoice = input.nextInt();
-				inventory.addInventory(currentLocation.pickUpItem(userChoice));
+				//inventory.addInventory(currentLocation.pickUpItem(userChoice));
 				currentLocation.showAllItemsHere();
 				
 			}
@@ -359,9 +359,8 @@ public class GameController
 		
 		while (makeChoice == true)
 		{
-			userChoice = 1;
 			System.out.println("Current Inventory: \n");
-			inventory.viewInventory();
+			//inventory.viewInventory();
 			System.out.println("\n");
 			
 			System.out.println("What you like to do? "
@@ -377,14 +376,14 @@ public class GameController
 			{
 				System.out.println("Which item would you like to view?");
 				userChoice = input.nextInt();
-				inventory.selectItem(userChoice);
+				//inventory.selectItem(userChoice);
 			}
 			if(userChoice == MENU.REMOVEITEM.getMenuNumber())
 			{
 				userChoice = 0;
 				System.out.println("Remove which item?");
 				userChoice = input.nextInt();
-				inventory.removeItem(userChoice);
+				//inventory.removeItem(userChoice);
 			}
 			
 					

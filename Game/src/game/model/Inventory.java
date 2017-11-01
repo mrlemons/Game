@@ -12,6 +12,7 @@ public class Inventory
 	
 	ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 	ArrayList<Armor> armors = new ArrayList<Armor>();
+	ArrayList<Integer> currentInventory = new ArrayList<Integer>();
 	
 	World theWorld = World.getWorld();
 	
@@ -26,91 +27,27 @@ public class Inventory
 		currentSlot = 0;
 	}
 	
-	//Add to our inventory
-	public void addInventory(int ID)
+	public void addToInventory(int ID)
 	{
-		int currentSlot = inventorySlotsTaken;
-		if(theWorld.getWeapon(ID) != null && inventorySlotsTaken >= maxInventorySlots )
+		if(theWorld.getWeapon(ID) != null)
 		{
 			weapons.add(theWorld.getWeapon(ID));
-			slot[currentSlot] = theWorld.getWeapon(ID).getID();
-			inventorySlotsTaken += 1;
+			currentInventory.add(ID);
 		}
-		else if(theWorld.getArmor(ID) != null && inventorySlotsTaken >= maxInventorySlots)
+		else if(theWorld.getArmor(ID) != null)
 		{
 			armors.add(theWorld.getArmor(ID));
-			slot[currentSlot] = theWorld.getArmor(ID).getID();
-			inventorySlotsTaken += 1;
-		}
-		if(inventorySlotsTaken >= maxInventorySlots)
-		{
-			System.out.println("No more space.");
+			currentInventory.add(ID);
 		}
 	}
 	
-	//View our inventory
-	public void viewInventory() 
+	public void showInventory()
 	{
+		Integer[] inventory = new Integer[currentInventory.size()];
+		inventory = currentInventory.toArray(inventory);
 		
-		
-		for(int numberChoice = 0; numberChoice < 5; numberChoice++)
-		{
-			if(getWeapon(slot[numberChoice]) != null)
-			{
-				System.out.println("(" + numberChoice + ")" + getWeapon(slot[numberChoice]).getName());
-				numberChoice += 1;
-			}
-			if(getArmor(slot[numberChoice]) != null)
-			{
-				System.out.println("(" + numberChoice + ")" + getArmor(slot[numberChoice]).getName());
-			}
-		}
-		
-		
-		if(inventorySlotsTaken == 0)
-		{
-			System.out.println("Nothing here");
-		}
+		if()
 	}
-	
-	//Select an item
-	public void selectItem(int choice)
-	{
-		
-		if(getWeapon(slot[choice]) != null)
-		{
-			System.out.println("\n"
-								+ "Name: " + getWeapon(slot[choice]).getName() + "\n"
-								+ "Description: " + getWeapon(slot[choice]).getDescription() + "\n");
-		}
-		else if(getArmor(slot[choice]) != null)
-		{
-			System.out.println("\n"
-					+ "Name: " + getArmor(slot[choice]).getName() + "\n"
-					+ "Description: " + getArmor(slot[choice]).getDescription() + "\n");
-		}
-	}
-	
-	public void removeItem(int choice)
-	{
-		
-		
-		if(getWeapon(slot[choice]) != null)
-		{
-			weapons.remove(getWeapon(slot[choice]));
-			slot[choice] = 0;
-			inventorySlotsTaken -= 1;
-			
-		}
-		else if(getArmor(slot[choice]) != null)
-		{
-			armors.remove(getArmor(slot[choice]));
-			slot[choice] = 0;
-			inventorySlotsTaken -= 1;
-			
-		}
-	}
-	
 	
 	public Weapon getWeapon(int ID)
 	{
