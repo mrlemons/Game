@@ -157,26 +157,17 @@ public class Location
 		itemPosition = itemsHere.toArray(itemPosition);
 		int itemID = 0;
 		
-		try 
+		if(getWeaponsHere(itemPosition[choice]) != null)
 		{
-			if(getWeaponsHere(itemPosition[choice]) != null)
-			{
-				System.out.println("You picked up a " + getWeaponsHere(itemPosition[choice]).getName() + "\n");
-				itemID = getWeaponsHere(itemPosition[choice]).getID();
-				//itemsHere.remove(itemID);
-				weaponsHere.remove(getWeaponsHere(itemPosition[choice]));
-				
-			}
-			else if(getArmorsHere(itemPosition[choice]) != null)
-			{
-				
-			}
-			
+			System.out.println("You picked up a " + getWeaponsHere(itemPosition[choice]).getName() + "\n");
+			itemID = getWeaponsHere(itemPosition[choice]).getID();
+			itemsHere.remove(itemsHere.indexOf(itemID));
+			weaponsHere.remove(weaponsHere.indexOf(getWeaponsHere(itemID)));
 			
 		}
-		catch(IndexOutOfBoundsException e)
+		else if(getArmorsHere(itemPosition[choice]) != null)
 		{
-			System.out.println("Invalid choice");
+			
 		}
 		return itemID;
 	}

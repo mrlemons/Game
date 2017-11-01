@@ -336,8 +336,13 @@ public class GameController
 			{
 				System.out.println("Which Item?\n");
 				userChoice = input.nextInt();
-				currentLocation.pickUpItem(userChoice);
+				inventory.addInventory(currentLocation.pickUpItem(userChoice));
 				currentLocation.showAllItemsHere();
+				
+			}
+			if(userChoice == MENU.GOBACK.getMenuNumber())
+			{
+				lookingAround = false;
 			}
 		}
 		

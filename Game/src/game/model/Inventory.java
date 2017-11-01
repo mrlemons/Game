@@ -30,19 +30,19 @@ public class Inventory
 	public void addInventory(int ID)
 	{
 		int currentSlot = inventorySlotsTaken;
-		if(theWorld.getWeapon(ID) != null && inventorySlotsTaken <= maxInventorySlots )
+		if(theWorld.getWeapon(ID) != null && inventorySlotsTaken >= maxInventorySlots )
 		{
 			weapons.add(theWorld.getWeapon(ID));
 			slot[currentSlot] = theWorld.getWeapon(ID).getID();
 			inventorySlotsTaken += 1;
 		}
-		else if(theWorld.getArmor(ID) != null && inventorySlotsTaken <= maxInventorySlots)
+		else if(theWorld.getArmor(ID) != null && inventorySlotsTaken >= maxInventorySlots)
 		{
 			armors.add(theWorld.getArmor(ID));
 			slot[currentSlot] = theWorld.getArmor(ID).getID();
 			inventorySlotsTaken += 1;
 		}
-		else
+		if(inventorySlotsTaken >= maxInventorySlots)
 		{
 			System.out.println("No more space.");
 		}

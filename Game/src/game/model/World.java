@@ -93,6 +93,7 @@ public class World
 		westRoomFloorOne.setLocationToTheEast(southRoomFloorOne);
 		
 		//Add any weapons to location
+	
 		roomStart.addWeaponHere(getWeapon(WEAPON_ID_RUSTY_SWORD));
 		roomStart.addWeaponHere(getWeapon(WEAPON_ID_OLD_BOW));
 		
