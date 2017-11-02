@@ -16,8 +16,7 @@ public class Inventory
 	
 	World theWorld = World.getWorld();
 	
-	/*Integer[] inventory = new Integer[currentInventory.size()];
-	  inventory = currentInventory.toArray(inventory);*/
+	/**/
 	
 	private int[] slot = new int[5];
 	
@@ -30,17 +29,54 @@ public class Inventory
 	
 	public void addToInventory(int ID)
 	{
-		if(theWorld.getWeapon(ID) != null)
+		if(inventorySlotsTaken <= maxInventorySlots)
 		{
-			weapons.add(theWorld.getWeapon(ID));
-			currentInventory.add(ID);
+			if(theWorld.getWeapon(ID) != null)
+			{
+				weapons.add(theWorld.getWeapon(ID));
+				currentInventory.add(ID);
+				System.out.println(getWeapon(ID).getName() + " was added.");
+			}
+			else if(theWorld.getArmor(ID) != null)
+			{
+				armors.add(theWorld.getArmor(ID));
+				currentInventory.add(ID);
+				System.out.println(getArmor(ID).getName());
+			}
+			inventorySlotsTaken += 1;
 		}
-		else if(theWorld.getArmor(ID) != null)
+		else
 		{
-			armors.add(theWorld.getArmor(ID));
-			currentInventory.add(ID);
+			System.out.print("No more space");
+		}
+		
+	}
+	
+	public void removeFromInventory(int choice, Location location)
+	{
+		Integer[] inventory = new Integer[currentInventory.size()];
+		inventory = currentInventory.toArray(inventory);
+		int itemID = 0;
+		
+		if(getWeapon(inventory[choice]) != null)
+		{
+			itemID = getWeapon(inventory[choice]).getID();
+			System.out.println("You dropped a " + getWeapon(itemID).getName());
+			location.addWeaponHere(getWeapon(inventory[itemID]));
+			currentInventory.remove(currentInventory.indexOf(itemID));
+			weapons.remove(weapons.indexOf(getWeapon(itemID)));
+		}
+		else if(getArmor(inventory[choice]) != null)
+		{
+			itemID = getArmor(inventory[choice]).getID();
+			System.out.println("You picked dropped a " + getArmor(itemID).getID());
+			location.addArmorHere(getArmor(inventory[itemID]));
+			currentInventory.remove(currentInventory.indexOf(itemID));
+			armors.remove(armors.indexOf(getArmor(itemID)));
 		}
 	}
+	
+	
 	
 	public void showInventory()
 	{

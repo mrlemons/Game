@@ -336,7 +336,7 @@ public class GameController
 			{
 				System.out.println("Which Item?\n");
 				userChoice = input.nextInt();
-				//inventory.addInventory(currentLocation.pickUpItem(userChoice));
+				inventory.addToInventory(currentLocation.pickUpItem(userChoice));
 				currentLocation.showAllItemsHere();
 				
 			}
