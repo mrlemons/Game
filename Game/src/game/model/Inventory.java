@@ -54,23 +54,23 @@ public class Inventory
 	
 	public void removeFromInventory(int choice, Location location)
 	{
-		Integer[] inventory = new Integer[currentInventory.size()];
-		inventory = currentInventory.toArray(inventory);
+		Integer[] itemPosition = new Integer[currentInventory.size()];
+		itemPosition = currentInventory.toArray(itemPosition);
 		int itemID = 0;
 		
-		if(getWeapon(inventory[choice]) != null)
+		if(getWeapon(itemPosition[choice]) != null)
 		{
-			itemID = getWeapon(inventory[choice]).getID();
+			itemID = getWeapon(itemPosition[choice]).getID();
 			System.out.println("You dropped a " + getWeapon(itemID).getName());
-			location.addWeaponHere(getWeapon(inventory[itemID]));
+			location.addWeaponHere(getWeapon(itemID));
 			currentInventory.remove(currentInventory.indexOf(itemID));
 			weapons.remove(weapons.indexOf(getWeapon(itemID)));
 		}
-		else if(getArmor(inventory[choice]) != null)
+		else if(getArmor(itemPosition[choice]) != null)
 		{
-			itemID = getArmor(inventory[choice]).getID();
+			itemID = getArmor(itemPosition[choice]).getID();
 			System.out.println("You picked dropped a " + getArmor(itemID).getID());
-			location.addArmorHere(getArmor(inventory[itemID]));
+			location.addArmorHere(getArmor(itemPosition[itemID]));
 			currentInventory.remove(currentInventory.indexOf(itemID));
 			armors.remove(armors.indexOf(getArmor(itemID)));
 		}

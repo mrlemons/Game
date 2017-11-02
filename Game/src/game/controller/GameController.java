@@ -351,8 +351,6 @@ public class GameController
 	public void manageInventory()
 	{
 		boolean makeChoice = true;
-		inventory.addToInventory(theWorld.getWeapon(theWorld.WEAPON_ID_RUSTY_SWORD).getID());
-		inventory.addToInventory(theWorld.getWeapon(theWorld.WEAPON_ID_OLD_BOW).getID());
 		
 		while (makeChoice == true)
 		{
@@ -380,9 +378,12 @@ public class GameController
 				userChoice = 0;
 				System.out.println("Remove which item?");
 				userChoice = input.nextInt();
-				//inventory.removeItem(userChoice);
+				inventory.removeFromInventory(userChoice, currentLocation);
 			}
-			
+			if(userChoice == MENU.GOBACK.getMenuNumber())
+			{
+				makeChoice = false;
+			}
 					
 			
 			
