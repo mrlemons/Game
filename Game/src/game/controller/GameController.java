@@ -65,7 +65,12 @@ public class GameController
 		{
 			System.out.println("\n"
 					+ "Make a choice:\n"
-					+ "(1)View Stats");
+					+ "(1)View Stats\n"
+					+ "(2)Look Around\n"
+					+ "(3)Move\n"
+					+ "(4)Rest\n"
+					+ "(5)Eat\n"
+					+ "(6)View Inventory\n");
 			userChoice = input.nextInt();
 			
 			if(userChoice == 1) 
