@@ -16,7 +16,8 @@ public class Inventory
 	
 	World theWorld = World.getWorld();
 	
-
+	/*Integer[] inventory = new Integer[currentInventory.size()];
+	  inventory = currentInventory.toArray(inventory);*/
 	
 	private int[] slot = new int[5];
 	
@@ -43,10 +44,29 @@ public class Inventory
 	
 	public void showInventory()
 	{
-		Integer[] inventory = new Integer[currentInventory.size()];
-		inventory = currentInventory.toArray(inventory);
+		int itemNumber = 0;
 		
-		if()
+		if(currentInventory.isEmpty())
+		{
+			System.out.println("Nothing here...");
+		}
+		else
+		{
+			for(Integer item : currentInventory)
+			{
+				if(getWeapon(item) != null)
+				{
+					System.out.println("(" + itemNumber + ")" + getWeapon(item).getName());
+					itemNumber += 1;
+				}
+				else if(getArmor(item) != null)
+				{
+					System.out.println("(" + itemNumber + ")" + getArmor(item).getName());
+					itemNumber += 1;
+				}
+					
+			}
+		}
 	}
 	
 	public Weapon getWeapon(int ID)
