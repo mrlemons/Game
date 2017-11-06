@@ -9,6 +9,7 @@ import game.model.World;
 
 public class GameController
 {
+	//Assign numbers to our Menu Options
 	public enum MENU
 	{
 		VIEWSTATS(1),
@@ -120,14 +121,15 @@ public class GameController
 	
 	public void setMenuState()
 	{
+		//Print Main Menu
 		System.out.println("\n"
 				+ "Make a choice:\n"
-				+ "(1)View Stats\n"
-				+ "(2)Look Around\n"
-				+ "(3)Move\n"
-				+ "(4)Rest\n"
-				+ "(5)Eat\n"
-				+ "(6)View Inventory\n");
+				+ "(" + MENU.VIEWITEM.getMenuNumber() + ")View Stats\n"
+				+ "(" + MENU.LOOKAROUND.getMenuNumber() + ")Look Around\n"
+				+ "(" + MENU.MOVE.getMenuNumber() + ")Move\n"
+				+ "(" + MENU.REST.getMenuNumber() + ")Rest\n"
+				+ "(" + MENU.EAT.getMenuNumber() + ")Eat\n"
+				+ "(" + MENU.INVENTORY.getMenuNumber() + ")View Inventory\n");
 		userChoice = input.nextInt();
 		
 		
@@ -328,8 +330,8 @@ public class GameController
 		{
 			System.out.println("What would you like to do?\n"
 								+ "\n"
-								+ "(1)Pick Up Item "
-								+ "(9)Go Back \n");
+								+ "(" + MENU.PICKUPITEM.getMenuNumber() + ")Pick Up Item "
+								+ "(" + MENU.GOBACK.getMenuNumber() + ")Go Back \n");
 			userChoice = input.nextInt();
 			
 			if(userChoice == MENU.PICKUPITEM.getMenuNumber())
@@ -359,11 +361,11 @@ public class GameController
 			System.out.println("\n");
 			
 			System.out.println("What you like to do? "
-								+ "(1)View Item "
-								+ "(2)Equip "
-								+ "(3)Use Item "
-								+ "(4)Remove Item"
-								+ "(5)Go Back ");
+								+ "(" + MENU.VIEWITEM.getMenuNumber() + ")View Item "
+								+ "(" + MENU.EQUIP.getMenuNumber() + ")Equip "
+								+ "(" + MENU.USEITEM.getMenuNumber() + ")Use Item "
+								+ "(" + MENU.REMOVEITEM.getMenuNumber() + ")Remove Item "
+								+ "(" + MENU.GOBACK.getMenuNumber() + ")Go Back ");
 			userChoice = input.nextInt();
 			
 			
@@ -371,7 +373,7 @@ public class GameController
 			{
 				System.out.println("Which item would you like to view?");
 				userChoice = input.nextInt();
-				//inventory.selectItem(userChoice);
+				inventory.selectItem(userChoice);
 			}
 			if(userChoice == MENU.REMOVEITEM.getMenuNumber())
 			{

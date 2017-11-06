@@ -44,11 +44,18 @@ public class World
 	
 	public void populateWeapons() 
 	{
-		//int ID, String name, String description, int modifier
+		//int ID, String name, String description
 		
-		Weapon rustySword = new Weapon(WEAPON_ID_RUSTY_SWORD,"Rusty Sword", "An old sword that has gathered some rust.", 1 );
-		Weapon oldBow = new Weapon(WEAPON_ID_OLD_BOW, "Old Bow", "An old bow that has seen better days.", 1);
-		Weapon splinteredStaff = new Weapon(WEAPON_ID_SPLINTERED_STAFF, "Splintered Staff", "A staff with many splinters.", 1);
+		Weapon rustySword = new Weapon(WEAPON_ID_RUSTY_SWORD,"Rusty Sword", "An old sword that has gathered some rust.");
+		Weapon oldBow = new Weapon(WEAPON_ID_OLD_BOW, "Old Bow", "An old bow that has seen better days.");
+		Weapon splinteredStaff = new Weapon(WEAPON_ID_SPLINTERED_STAFF, "Splintered Staff", "A staff with many splinters.");
+		
+		//Set our weapon stat modifiers 
+		rustySword.setStrMod(1);
+		
+		oldBow.setDexMod(1);
+		
+		splinteredStaff.setIntMod(1);
 		
 		//Add the weapons to our weapon list
 		weapons.add(rustySword);
@@ -60,7 +67,10 @@ public class World
 	{
 		//int ID, String name, String description, int modifier
 		
-		Armor ironArmor = new Armor(ARMOR_ID_IRON_ARMOR, "Iron Armor", "A set of iron armor once worn by a forgotten knight", 1);
+		Armor ironArmor = new Armor(ARMOR_ID_IRON_ARMOR, "Iron Armor", "A set of iron armor once worn by a forgotten knight");
+		
+		//Set our armor stat modifiers
+		ironArmor.setVitMod(1);
 		
 		//Add the armor to our armor list
 		armors.add(ironArmor);

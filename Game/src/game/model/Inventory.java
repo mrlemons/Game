@@ -6,7 +6,6 @@ public class Inventory
 {
 	private int inventorySlotsTaken;
 	private int maxInventorySlots;
-	private int currentSlot;
 	
 	
 	
@@ -17,16 +16,15 @@ public class Inventory
 	World theWorld = World.getWorld();
 	
 	/**/
-	
-	private int[] slot = new int[5];
+
 	
 	public Inventory()
 	{
 		inventorySlotsTaken = 0;
 		maxInventorySlots = 6;
-		currentSlot = 0;
 	}
 	
+	//Adds item to our inventory
 	public void addToInventory(int ID)
 	{
 		if(inventorySlotsTaken <= maxInventorySlots)
@@ -52,32 +50,88 @@ public class Inventory
 		
 	}
 	
+	//Drop item back into the world
 	public void removeFromInventory(int choice, Location location)
 	{
 		Integer[] itemPosition = new Integer[currentInventory.size()];
 		itemPosition = currentInventory.toArray(itemPosition);
 		int itemID = 0;
 		
-		if(getWeapon(itemPosition[choice]) != null)
+		try
 		{
-			itemID = getWeapon(itemPosition[choice]).getID();
-			System.out.println("You dropped a " + getWeapon(itemID).getName());
-			location.addWeaponHere(getWeapon(itemID));
-			currentInventory.remove(currentInventory.indexOf(itemID));
-			weapons.remove(weapons.indexOf(getWeapon(itemID)));
+			if(getWeapon(itemPosition[choice]) != null)
+			{
+				itemID = getWeapon(itemPosition[choice]).getID();
+				System.out.println("You dropped a " + getWeapon(itemID).getName());
+				location.addWeaponHere(getWeapon(itemID));
+				currentInventory.remove(currentInventory.indexOf(itemID));
+				weapons.remove(weapons.indexOf(getWeapon(itemID)));
+			}
+			else if(getArmor(itemPosition[choice]) != null)
+			{
+				itemID = getArmor(itemPosition[choice]).getID();
+				System.out.println("You picked dropped a " + getArmor(itemID).getID());
+				location.addArmorHere(getArmor(itemPosition[itemID]));
+				currentInventory.remove(currentInventory.indexOf(itemID));
+				armors.remove(armors.indexOf(getArmor(itemID)));
+			}
 		}
-		else if(getArmor(itemPosition[choice]) != null)
+		catch (IndexOutOfBoundsException e)
 		{
-			itemID = getArmor(itemPosition[choice]).getID();
-			System.out.println("You picked dropped a " + getArmor(itemID).getID());
-			location.addArmorHere(getArmor(itemPosition[itemID]));
-			currentInventory.remove(currentInventory.indexOf(itemID));
-			armors.remove(armors.indexOf(getArmor(itemID)));
+			System.out.println("Not a valid selection\n");
+		}
+		
+		
+		
+		
+	}
+	
+	//Select item in inventory
+	public void selectItem(int choice)
+	{
+		Integer[] itemPosition = new Integer[currentInventory.size()];
+		itemPosition = currentInventory.toArray(itemPosition);
+		int itemID = 0;
+		
+		try 
+		{
+			if(getWeapon(itemPosition[choice]) != null)
+			{
+				itemID = getWeapon(itemPosition[choice]).getID();
+				System.out.println(getWeapon(itemID).getName() + "\n"
+									+ getWeapon(itemID).getDescription() + "\n"
+									+ "Modifiers: \n"
+									+ "Strength: " + getWeapon(itemID).getStrMod() + "\n"
+									+ "Dex: " + getWeapon(itemID).getDexMod() + "\n"
+									+ "Vitality: " + getWeapon(itemID).getVitMod() + "\n"
+									+ "Intelligence: " + getWeapon(itemID).getIntMod() + "\n"
+									+ "Wisdom: " + getWeapon(itemID).getWisMod()  + "\n");
+			}
+			else if(getArmor(itemPosition[choice]) != null)
+			{
+				itemID = getArmor(itemPosition[choice]).getID();
+				System.out.println(getArmor(itemID).getName() + "\n"
+									+ getArmor(itemID).getDescription() + "\n"
+									+ "Modifiers: \n"
+									+ "Strength: " + getArmor(itemID).getStrMod() + "\n"
+									+ "Dex: " + getArmor(itemID).getDexMod() + "\n"
+									+ "Vitality: " + getArmor(itemID).getVitMod() + "\n"
+									+ "Intelligence: " + getArmor(itemID).getIntMod() + "\n"
+									+ "Wisdom: " + getArmor(itemID).getWisMod()  + "\n");
+			}
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			System.out.println("Not a valid selection\n");
 		}
 	}
 	
+	public void equipItem()
+	{
+		
+	}
 	
-	
+	//Print out all our items in our inventory
 	public void showInventory()
 	{
 		int itemNumber = 0;

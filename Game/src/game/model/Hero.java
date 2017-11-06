@@ -9,6 +9,9 @@ public class Hero
 	private int intelligence;
 	private int wisdom;
 	
+	Weapon weaponEquip;
+	Armor armorEquip;
+	
 	
 	public Hero(String name, int strength, int dex, int vitality, 
 					int intelligence, int wisdom)
@@ -19,6 +22,15 @@ public class Hero
 		this.vitality = vitality;
 		this.intelligence = intelligence;
 		this.wisdom = wisdom;
+	}
+	public void setWeaponEquip(Weapon weapon)
+	{
+		weaponEquip = weapon;
+		
+	}
+	public Weapon getWeaponEquip()
+	{
+		return weaponEquip;
 	}
 	
 	public String getName()
