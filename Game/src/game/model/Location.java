@@ -141,6 +141,7 @@ public class Location
 		}
 		else
 		{
+			System.out.println("You see a :\n");
 			for(Integer item : itemsHere)
 			{
 				System.out.println("(" + itemNumber + ")" + getWeaponsHere(item).getName());

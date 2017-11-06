@@ -379,10 +379,7 @@ public class GameController
 			}
 			if(userChoice == MENU.EQUIP.getMenuNumber())
 			{
-				inventory.showCurrentEquipment(hero);
-				System.out.println("What would you like to do?\n"
-									+ "(" + MENU.EQUIPITEM.getMenuNumber() + ")" + "Equip Item\n"
-									+ "(" + MENU.UNEQUIPITEM.getMenuNumber() + ")" + "Unequip Item\n");
+				equipMenu();
 			}
 			if(userChoice == MENU.REMOVEITEM.getMenuNumber())
 			{
@@ -395,9 +392,28 @@ public class GameController
 			{
 				makeChoice = false;
 			}
-					
 			
-			
+		}
+		
+	}
+	
+	public void equipMenu()
+	{
+		inventory.showCurrentEquipment(hero);
+		System.out.println("What would you like to do?\n"
+							+ "(" + MENU.EQUIPITEM.getMenuNumber() + ")" + "Equip Item\n"
+							+ "(" + MENU.UNEQUIPITEM.getMenuNumber() + ")" + "Unequip Item\n"
+							+ "(" + MENU.GOBACK.getMenuNumber() + ")" + "Go Back");
+		userChoice = input.nextInt();
+		if(userChoice == MENU.EQUIPITEM.getMenuNumber()) 
+		{
+			System.out.println("Equip which item?");
+			userChoice = input.nextInt();
+			inventory.equipItem(hero, currentLocation, userChoice);
+		}
+		if(userChoice == MENU.GOBACK.getMenuNumber())
+		{
+			manageInventory();
 		}
 	}
 }

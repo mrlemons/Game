@@ -139,10 +139,17 @@ public class Inventory
 				itemID = getWeapon(itemPosition[choice]).getID();
 				if(hero.weaponEquip != null)
 				{
-					System.out.println("You dropped " + hero.weaponEquip + " and equiped " + getWeapon(itemID).getName() + "\n");
+					System.out.println("You dropped " + hero.weaponEquip.getName() + " and equiped " + getWeapon(itemID).getName() + "\n");
 					location.addWeaponHere(hero.weaponEquip);
+					
+				}
+				else
+				{
+					System.out.println("You equipped the " + getWeapon(itemID).getName());
 				}
 				hero.setWeaponEquip(getWeapon(itemID));
+				currentInventory.remove(currentInventory.indexOf(itemID));
+				weapons.remove(weapons.indexOf(itemID));
 			}
 		}
 		catch (IndexOutOfBoundsException e)

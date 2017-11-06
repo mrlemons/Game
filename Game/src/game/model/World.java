@@ -17,15 +17,15 @@ public class World
 	public final int WEAPON_ID_OLD_BOW = 2;
 	public final int WEAPON_ID_SPLINTERED_STAFF = 3;
 	
-	//Armor ID's 201 - 300
+	//Armor ID's 201 - 400
 	public final int ARMOR_ID_IRON_ARMOR = 201;
 	
-	//Item ID's 301 - 400
+	//Item ID's 401 - 600
 	
-	//Location ID's 401 - 500
-	public final int LOCATION_ID_ROOM_START = 401;
-	public final int LOCATION_ID_SOUTH_ROOM_FLOOR_ONE = 402;
-	public final int LOCATION_ID_WEST_ROOM_FLOOR_ONE = 403;
+	//Location ID's 601 - 800
+	public final int LOCATION_ID_ROOM_START = 601;
+	public final int LOCATION_ID_SOUTH_ROOM_FLOOR_ONE = 602;
+	public final int LOCATION_ID_WEST_ROOM_FLOOR_ONE = 603;
 	
 	public World() 
 	{

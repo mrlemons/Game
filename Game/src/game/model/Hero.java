@@ -34,6 +34,8 @@ public class Hero
 		
 		//Add weapon mods to our hero stats
 		
+		
+		
 	}
 	public Weapon getWeaponEquip()
 	{
