@@ -107,6 +107,7 @@ public class Inventory
 			else if(getArmor(itemPosition[choice]) != null)
 			{
 				itemID = getArmor(itemPosition[choice]).getID();
+				
 				System.out.println(getArmor(itemID).getName() + "\n"
 									+ getArmor(itemID).getDescription() + "\n"
 									+ "Modifiers: \n"
@@ -115,6 +116,7 @@ public class Inventory
 									+ "Vitality: " + getArmor(itemID).getVitMod() + "\n"
 									+ "Intelligence: " + getArmor(itemID).getIntMod() + "\n"
 									+ "Wisdom: " + getArmor(itemID).getWisMod()  + "\n");
+									
 			}
 		}
 		catch (IndexOutOfBoundsException e)
@@ -163,16 +165,27 @@ public class Inventory
 		itemPosition = currentInventory.toArray(itemPosition);
 		int itemID = 0;
 		
-		final Object[][] table = new String[7][];
 		
-		if(getWeapon(itemPosition[choice]) != null)
+		
+		if(hero.getWeaponEquip() != null)
 		{
+			final Object[][] table = new String[6][];
 			itemID = getWeapon(itemPosition[choice]).getID();
 			table[0] = new String[] {"|", hero.getWeaponEquip().getName() + "(Equipped)", 		"|", getWeapon(itemID).getName() + "(Inventory)", 		"|"};
 			table[1] = new String[] {"|", "Strength: " + hero.getWeaponEquip().getStrMod(), 	"|", "Strength: " + getWeapon(itemID).getStrMod(), 		"|"};
 			table[2] = new String[] {"|", "Dex: " + hero.getWeaponEquip().getDexMod(), 			"|", "Dex: " + getWeapon(itemID).getDexMod(), 			"|"};
 			table[3] = new String[] {"|", "Vitality: " + hero.getWeaponEquip().getVitMod(), 	"|", "Vitality: " + getWeapon(itemID).getVitMod(),		"|"};
 			table[4] = new String[] {"|", "Intelligence: " + hero.getWeaponEquip().getIntMod(), "|", "Intelligence: " + getWeapon(itemID).getIntMod(),	"|"};
+			table[5] = new String[] {"|", "Wisdom: " + hero.getWeaponEquip().getWisMod(),		"|", "Wisdom: " + getWeapon(itemID).getWisMod(), 		"|"};
+			
+			for (final Object[] row : table)
+			{
+				System.out.format("%30s%30s%30s%30s%30s\n", row);
+			}
+		}
+		else
+		{
+			System.out.println("Nothing equipped");
 		}
 	}
 	
@@ -190,14 +203,14 @@ public class Inventory
 		{
 			weaponID = hero.getWeaponEquip().getID();
 			System.out.println("Currently Equiped Weapon: \n" 
-					+ getWeapon(weaponID).getName() + "\n"
-					+ getWeapon(weaponID).getDescription() + "\n"
+					+ hero.getWeaponEquip().getName() + "\n"
+					+ hero.getWeaponEquip().getDescription() + "\n"
 					+ "Modifiers: \n"
-					+ "Strength: " + getWeapon(weaponID).getStrMod() + "\n"
-					+ "Dex: " + getWeapon(weaponID).getDexMod() + "\n"
-					+ "Vitality: " + getWeapon(weaponID).getVitMod() + "\n"
-					+ "Intelligence: " + getWeapon(weaponID).getIntMod() + "\n"
-					+ "Wisdom: " + getWeapon(weaponID).getWisMod()  + "\n");
+					+ "Strength: " + hero.getWeaponEquip().getStrMod() + "\n"
+					+ "Dex: " + hero.getWeaponEquip().getDexMod() + "\n"
+					+ "Vitality: " + hero.getWeaponEquip().getVitMod() + "\n"
+					+ "Intelligence: " + hero.getWeaponEquip().getIntMod() + "\n"
+					+ "Wisdom: " + hero.getWeaponEquip().getWisMod()  + "\n");
 		}
 		
 	}

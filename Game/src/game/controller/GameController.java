@@ -22,7 +22,8 @@ public class GameController
 			VIEWITEM(1),
 			EQUIP(2),
 				EQUIPITEM(1),
-				UNEQUIPITEM(2),
+				COMPARE(2),
+				UNEQUIPITEM(3),
 			USEITEM(3),
 			REMOVEITEM(4),
 		GOBACK(9);
@@ -399,9 +400,9 @@ public class GameController
 	
 	public void equipMenu()
 	{
-		inventory.showCurrentEquipment(hero);
 		System.out.println("What would you like to do?\n"
 							+ "(" + MENU.EQUIPITEM.getMenuNumber() + ")" + "Equip Item\n"
+							+ "(" + MENU.COMPARE.getMenuNumber() + ")" + "Compare\n"
 							+ "(" + MENU.UNEQUIPITEM.getMenuNumber() + ")" + "Unequip Item\n"
 							+ "(" + MENU.GOBACK.getMenuNumber() + ")" + "Go Back");
 		userChoice = input.nextInt();
@@ -410,6 +411,12 @@ public class GameController
 			System.out.println("Equip which item?");
 			userChoice = input.nextInt();
 			inventory.equipItem(hero, currentLocation, userChoice);
+		}
+		if(userChoice == MENU.COMPARE.getMenuNumber())
+		{
+			System.out.println("Compare what item?\n");
+			userChoice = input.nextInt();
+			inventory.compareEquipment(hero, userChoice);
 		}
 		if(userChoice == MENU.GOBACK.getMenuNumber())
 		{
