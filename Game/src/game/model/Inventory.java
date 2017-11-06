@@ -163,12 +163,16 @@ public class Inventory
 		itemPosition = currentInventory.toArray(itemPosition);
 		int itemID = 0;
 		
-		final Object[][] table = new String[6][];
+		final Object[][] table = new String[7][];
 		
 		if(getWeapon(itemPosition[choice]) != null)
 		{
 			itemID = getWeapon(itemPosition[choice]).getID();
-			table[0] = new String[] {"|", hero.getWeaponEquip().getName() + "(Equipped)", "|", getWeapon(itemID).getName()};
+			table[0] = new String[] {"|", hero.getWeaponEquip().getName() + "(Equipped)", 		"|", getWeapon(itemID).getName() + "(Inventory)", 		"|"};
+			table[1] = new String[] {"|", "Strength: " + hero.getWeaponEquip().getStrMod(), 	"|", "Strength: " + getWeapon(itemID).getStrMod(), 		"|"};
+			table[2] = new String[] {"|", "Dex: " + hero.getWeaponEquip().getDexMod(), 			"|", "Dex: " + getWeapon(itemID).getDexMod(), 			"|"};
+			table[3] = new String[] {"|", "Vitality: " + hero.getWeaponEquip().getVitMod(), 	"|", "Vitality: " + getWeapon(itemID).getVitMod(),		"|"};
+			table[4] = new String[] {"|", "Intelligence: " + hero.getWeaponEquip().getIntMod(), "|", "Intelligence: " + getWeapon(itemID).getIntMod(),	"|"};
 		}
 	}
 	
