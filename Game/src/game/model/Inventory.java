@@ -81,9 +81,6 @@ public class Inventory
 			System.out.println("Not a valid selection\n");
 		}
 		
-		
-		
-		
 	}
 	
 	//Select item in inventory
@@ -149,7 +146,7 @@ public class Inventory
 				}
 				hero.setWeaponEquip(getWeapon(itemID));
 				currentInventory.remove(currentInventory.indexOf(itemID));
-				weapons.remove(weapons.indexOf(itemID));
+				weapons.remove(weapons.indexOf(getWeapon(itemID)));
 			}
 		}
 		catch (IndexOutOfBoundsException e)
@@ -158,6 +155,21 @@ public class Inventory
 		}
 		
 		
+	}
+	
+	public void compareEquipment(Hero hero, int choice)
+	{
+		Integer[] itemPosition = new Integer[currentInventory.size()];
+		itemPosition = currentInventory.toArray(itemPosition);
+		int itemID = 0;
+		
+		final Object[][] table = new String[6][];
+		
+		if(getWeapon(itemPosition[choice]) != null)
+		{
+			itemID = getWeapon(itemPosition[choice]).getID();
+			table[0] = new String[] {"|", hero.getWeaponEquip().getName() + "(Equipped)", "|", getWeapon(itemID).getName()};
+		}
 	}
 	
 	public void showCurrentEquipment(Hero hero)
