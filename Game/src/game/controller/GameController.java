@@ -3,6 +3,8 @@ package game.controller;
 import java.util.Scanner;
 
 import game.model.Hero;
+import game.model.Location;
+import game.model.World;
 
 public class GameController
 {
@@ -20,6 +22,9 @@ public class GameController
 	private int startingWisdom;
 	
 	Hero hero;
+	World theWorld = World.getWorld();
+	
+	private Location currentLocation;
 	
 	public GameController()
 	{
@@ -55,6 +60,7 @@ public class GameController
 			
 			if(userChoice == 1)
 			{
+				
 				gameOn = true;
 				menuScreenOn = false;
 			}
