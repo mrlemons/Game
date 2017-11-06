@@ -126,8 +126,56 @@ public class Inventory
 		}
 	}
 	
-	public void equipItem()
+	public void equipItem(Hero hero, Location location, int choice)
 	{
+		Integer[] itemPosition = new Integer[currentInventory.size()];
+		itemPosition = currentInventory.toArray(itemPosition);
+		int itemID = 0;
+		
+		try 
+		{
+			if(getWeapon(itemPosition[choice]) != null)
+			{
+				itemID = getWeapon(itemPosition[choice]).getID();
+				if(hero.weaponEquip != null)
+				{
+					System.out.println("You dropped " + hero.weaponEquip + " and equiped " + getWeapon(itemID).getName() + "\n");
+					location.addWeaponHere(hero.weaponEquip);
+				}
+				hero.setWeaponEquip(getWeapon(itemID));
+			}
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			
+		}
+		
+		
+	}
+	
+	public void showCurrentEquipment(Hero hero)
+	{
+		int weaponID = 0;
+		int armorID = 0;
+		
+		if(hero.getWeaponEquip() == null)
+		{
+			System.out.println("Nothing Equiped\n");
+		}
+		
+		if(hero.getWeaponEquip() != null)
+		{
+			weaponID = hero.getWeaponEquip().getID();
+			System.out.println("Currently Equiped Weapon: \n" 
+					+ getWeapon(weaponID).getName() + "\n"
+					+ getWeapon(weaponID).getDescription() + "\n"
+					+ "Modifiers: \n"
+					+ "Strength: " + getWeapon(weaponID).getStrMod() + "\n"
+					+ "Dex: " + getWeapon(weaponID).getDexMod() + "\n"
+					+ "Vitality: " + getWeapon(weaponID).getVitMod() + "\n"
+					+ "Intelligence: " + getWeapon(weaponID).getIntMod() + "\n"
+					+ "Wisdom: " + getWeapon(weaponID).getWisMod()  + "\n");
+		}
 		
 	}
 	

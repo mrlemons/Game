@@ -21,6 +21,8 @@ public class GameController
 		INVENTORY(6),
 			VIEWITEM(1),
 			EQUIP(2),
+				EQUIPITEM(1),
+				UNEQUIPITEM(2),
 			USEITEM(3),
 			REMOVEITEM(4),
 		GOBACK(9);
@@ -374,6 +376,13 @@ public class GameController
 				System.out.println("Which item would you like to view?");
 				userChoice = input.nextInt();
 				inventory.selectItem(userChoice);
+			}
+			if(userChoice == MENU.EQUIP.getMenuNumber())
+			{
+				inventory.showCurrentEquipment(hero);
+				System.out.println("What would you like to do?\n"
+									+ "(" + MENU.EQUIPITEM.getMenuNumber() + ")" + "Equip Item\n"
+									+ "(" + MENU.UNEQUIPITEM.getMenuNumber() + ")" + "Unequip Item\n");
 			}
 			if(userChoice == MENU.REMOVEITEM.getMenuNumber())
 			{

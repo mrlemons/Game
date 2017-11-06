@@ -25,7 +25,14 @@ public class Hero
 	}
 	public void setWeaponEquip(Weapon weapon)
 	{
-		weaponEquip = weapon;
+		weaponEquip = new Weapon(weapon.getID(), weapon.getName(), weapon.getDescription());
+		weaponEquip.setStrMod(weapon.getStrMod());
+		weaponEquip.setDexMod(weapon.getDexMod());
+		weaponEquip.setVitMod(weapon.getVitMod());
+		weaponEquip.setIntMod(weapon.getIntMod());
+		weaponEquip.setWisMod(weapon.getWisMod());
+		
+		//Add weapon mods to our hero stats
 		
 	}
 	public Weapon getWeaponEquip()
