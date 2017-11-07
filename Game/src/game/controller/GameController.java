@@ -60,7 +60,11 @@ public class GameController
 			
 			if(userChoice == 1)
 			{
+<<<<<<< HEAD
 				
+=======
+				currentLocation = theWorld.getLocation(theWorld.LOCATION_ID_ROOM_START);
+>>>>>>> Lesson-2
 				gameOn = true;
 				menuScreenOn = false;
 			}
@@ -79,9 +83,14 @@ public class GameController
 					+ "(6)View Inventory\n");
 			userChoice = input.nextInt();
 			
-			if(userChoice == 1) 
+			switch(userChoice)
 			{
-				viewStats();
+				case 1:
+					viewStats();
+					break;
+				case 2:
+					System.out.println(currentLocation.getName() + " \n" + currentLocation.getDescription());
+					break;
 			}
 		}
 		
