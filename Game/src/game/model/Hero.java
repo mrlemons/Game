@@ -9,6 +9,10 @@ public class Hero
 	private int intelligence;
 	private int wisdom;
 	
+	Weapon weaponEquip;
+	Armor armorEquip;
+	
+	
 	public Hero(String name, int strength, int dex, int vitality, 
 					int intelligence, int wisdom)
 	{
@@ -18,6 +22,24 @@ public class Hero
 		this.vitality = vitality;
 		this.intelligence = intelligence;
 		this.wisdom = wisdom;
+	}
+	public void setWeaponEquip(Weapon weapon)
+	{
+		weaponEquip = new Weapon(weapon.getID(), weapon.getName(), weapon.getDescription());
+		weaponEquip.setStrMod(weapon.getStrMod());
+		weaponEquip.setDexMod(weapon.getDexMod());
+		weaponEquip.setVitMod(weapon.getVitMod());
+		weaponEquip.setIntMod(weapon.getIntMod());
+		weaponEquip.setWisMod(weapon.getWisMod());
+		
+		//Add weapon mods to our hero stats
+		
+		
+		
+	}
+	public Weapon getWeaponEquip()
+	{
+		return weaponEquip;
 	}
 	
 	public String getName()

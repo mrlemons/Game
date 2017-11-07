@@ -5,14 +5,17 @@ public class Armor
 	private int ID;
 	private String name;
 	private String description;
-	private int modifier;
+	private int strMod;
+	private int dexMod;
+	private int vitMod;
+	private int intMod;
+	private int wisMod;
 	
-	public Armor(int ID, String name, String description, int modifier)
+	public Armor(int ID, String name, String description)
 	{
 		this.ID = ID;
 		this.name = name;
 		this.description = description;
-		this.modifier = modifier;
 	}
 
 	public int getID()
@@ -47,8 +50,59 @@ public class Armor
 
 	public int getModifier()
 	{
-		return modifier;
+		return strMod;
 	}
+
+	public int getStrMod()
+	{
+		return strMod;
+	}
+
+	public void setStrMod(int strMod)
+	{
+		this.strMod = strMod;
+	}
+
+	public int getDexMod()
+	{
+		return dexMod;
+	}
+
+	public void setDexMod(int dexMod)
+	{
+		this.dexMod = dexMod;
+	}
+
+	public int getVitMod()
+	{
+		return vitMod;
+	}
+
+	public void setVitMod(int vitMod)
+	{
+		this.vitMod = vitMod;
+	}
+
+	public int getIntMod()
+	{
+		return intMod;
+	}
+
+	public void setIntMod(int intMod)
+	{
+		this.intMod = intMod;
+	}
+
+	public int getWisMod()
+	{
+		return wisMod;
+	}
+
+	public void setWisMod(int wisMod)
+	{
+		this.wisMod = wisMod;
+	}
+	
 	
 	
 }
