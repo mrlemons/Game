@@ -60,11 +60,7 @@ public class GameController
 			
 			if(userChoice == 1)
 			{
-<<<<<<< HEAD
-				
-=======
 				currentLocation = theWorld.getLocation(theWorld.LOCATION_ID_ROOM_START);
->>>>>>> Lesson-2
 				gameOn = true;
 				menuScreenOn = false;
 			}
