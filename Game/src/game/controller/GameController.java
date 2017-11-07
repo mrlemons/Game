@@ -357,6 +357,8 @@ public class GameController
 	{
 		boolean makeChoice = true;
 		
+		inventory.addToInventory(theWorld.getWeapon(theWorld.WEAPON_ID_RUSTY_SWORD).getID());
+		inventory.addToInventory(theWorld.getWeapon(theWorld.WEAPON_ID_SPLINTERED_STAFF).getID());
 		while (makeChoice == true)
 		{
 			System.out.println("Current Inventory: \n");

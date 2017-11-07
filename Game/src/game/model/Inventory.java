@@ -180,7 +180,7 @@ public class Inventory
 			
 			for (final Object[] row : table)
 			{
-				System.out.format("%30s%30s%30s%30s%30s\n", row);
+				System.out.format("%-3s%-40s%-3s%-40s%-1s\n", row);
 			}
 		}
 		else
