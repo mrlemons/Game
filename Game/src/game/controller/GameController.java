@@ -358,8 +358,6 @@ public class GameController
 	{
 		boolean makeChoice = true;
 		
-		inventory.addToInventory(theWorld.getWeapon(theWorld.WEAPON_ID_RUSTY_SWORD).getID());
-		inventory.addToInventory(theWorld.getWeapon(theWorld.WEAPON_ID_SPLINTERED_STAFF).getID());
 		while (makeChoice == true)
 		{
 			System.out.println("Current Inventory: \n");
@@ -425,6 +423,28 @@ public class GameController
 			System.out.println("Compare what item?\n");
 			userChoice = input.nextInt();
 			inventory.compareEquipment(hero, userChoice);
+		}
+		if(userChoice == MENU.UNEQUIPITEM.getMenuNumber())
+		{
+			if(hero.getWeaponEquip() != null)
+			{
+				System.out.println("What do you want to remove?\n"
+									+ "(1)" + hero.getWeaponEquip().getName() + "\n");
+			}
+			if(hero.getWeaponEquip() == null)
+			{
+				System.out.println("(1)Nothing Equipped\n");
+			}
+			if(hero.getArmorEquip() != null)
+			{
+				System.out.println("(2)" + hero.getArmorEquip() + "\n");
+			}
+			if(hero.getArmorEquip() == null)
+			{
+				System.out.println("(2)Nothing Equipped\n");
+			}
+			userChoice = input.nextInt();
+			inventory.removeEquipment(hero, currentLocation, userChoice);
 		}
 		if(userChoice == MENU.GOBACK.getMenuNumber())
 		{

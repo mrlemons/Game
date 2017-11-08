@@ -302,6 +302,43 @@ public class Inventory
 		}
 	}
 	
+	public void removeEquipment(Hero hero, Location location, int choice)
+	{
+		if(choice == 1 && hero.getWeaponEquip() != null)
+		{
+			if(inventorySlotsTaken < maxInventorySlots)
+			{
+				System.out.println(hero.getWeaponEquip().getName() + " was added to your inventory.");
+				addToInventory(hero.getWeaponEquip().getID());
+				inventorySlotsTaken += 1;
+			}
+			else
+			{
+				System.out.println("There was no room in your inventory so you dropped " + hero.getWeaponEquip().getName());
+				location.addWeaponHere(hero.getWeaponEquip());
+			}
+			hero.removeWeapon();
+		}
+		else if(choice == 2 && hero.getArmorEquip() != null)
+		{
+			if(inventorySlotsTaken < maxInventorySlots)
+			{
+				addToInventory(hero.getArmorEquip().getID());
+				inventorySlotsTaken += 1;
+			}
+			else
+			{
+				System.out.println("There was no room in your inventory so you dropped " + hero.getArmorEquip().getName());
+				location.addArmorHere(hero.getArmorEquip());
+			}
+			hero.removeArmor();
+		}
+		else 
+		{
+			System.out.println("Please make a valid choice\n");
+		}
+	}
+	
 	public Weapon getWeapon(int ID)
 	{
 		for(Weapon weapon : weapons)

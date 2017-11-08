@@ -37,6 +37,15 @@ public class Hero
 		
 		
 	}
+	public void removeWeapon()
+	{
+		weaponEquip = null;
+	}
+	
+	public void removeArmor()
+	{
+		armorEquip = null;
+	}
 	
 	public void setArmorEquip(Armor armor)
 	{
