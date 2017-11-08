@@ -24,8 +24,9 @@ public class GameController
 				EQUIPITEM(1),
 				COMPARE(2),
 				UNEQUIPITEM(3),
-			USEITEM(3),
-			REMOVEITEM(4),
+			VIEWEQUIPMENT(3),
+			USEITEM(4),
+			REMOVEITEM(5),
 		GOBACK(9);
 		
 		private int menuNumber;
@@ -368,6 +369,7 @@ public class GameController
 			System.out.println("What you like to do? "
 								+ "(" + MENU.VIEWITEM.getMenuNumber() + ")View Item "
 								+ "(" + MENU.EQUIP.getMenuNumber() + ")Equip "
+								+ "(" + MENU.VIEWEQUIPMENT.getMenuNumber() + ")" + "View Equipment "
 								+ "(" + MENU.USEITEM.getMenuNumber() + ")Use Item "
 								+ "(" + MENU.REMOVEITEM.getMenuNumber() + ")Remove Item "
 								+ "(" + MENU.GOBACK.getMenuNumber() + ")Go Back ");
@@ -383,6 +385,10 @@ public class GameController
 			if(userChoice == MENU.EQUIP.getMenuNumber())
 			{
 				equipMenu();
+			}
+			if(userChoice == MENU.VIEWEQUIPMENT.getMenuNumber())
+			{
+				inventory.showCurrentEquipment(hero);
 			}
 			if(userChoice == MENU.REMOVEITEM.getMenuNumber())
 			{

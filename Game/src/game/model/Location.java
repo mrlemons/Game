@@ -142,7 +142,14 @@ public class Location
 			System.out.println("You see a :\n");
 			for(Integer item : itemsHere)
 			{
-				System.out.println("(" + itemNumber + ")" + getWeaponsHere(item).getName());
+				if(getWeaponsHere(item) != null)
+				{
+					System.out.println("(" + itemNumber + ")" + getWeaponsHere(item).getName());
+				}
+				else if(getArmorsHere(item) != null)
+				{
+					System.out.println("(" + itemNumber + ")" + getArmorsHere(item).getName());
+				}
 				itemNumber += 1;	
 			}
 		}
@@ -156,18 +163,30 @@ public class Location
 		itemPosition = itemsHere.toArray(itemPosition);
 		int itemID = 0;
 		
-		if(getWeaponsHere(itemPosition[choice]) != null)
+		try 
 		{
-			System.out.println("You picked up a " + getWeaponsHere(itemPosition[choice]).getName() + "\n");
-			itemID = getWeaponsHere(itemPosition[choice]).getID();
-			itemsHere.remove(itemsHere.indexOf(itemID));
-			weaponsHere.remove(weaponsHere.indexOf(getWeaponsHere(itemID)));
+			if(getWeaponsHere(itemPosition[choice]) != null)
+			{
+				System.out.println("You picked up a " + getWeaponsHere(itemPosition[choice]).getName() + "\n");
+				itemID = getWeaponsHere(itemPosition[choice]).getID();
+				itemsHere.remove(itemsHere.indexOf(itemID));
+				weaponsHere.remove(weaponsHere.indexOf(getWeaponsHere(itemID)));
+				
+			}
+			else if(getArmorsHere(itemPosition[choice]) != null)
+			{
+				System.out.println("You picked up a " + getArmorsHere(itemPosition[choice]).getName() + "\n");
+				itemID = getArmorsHere(itemPosition[choice]).getID();
+				itemsHere.remove(itemsHere.indexOf(itemID));
+				armorsHere.remove(armorsHere.indexOf(getArmorsHere(itemID)));
+			}
 			
 		}
-		else if(getArmorsHere(itemPosition[choice]) != null)
+		catch (IndexOutOfBoundsException e)
 		{
-			
+			System.out.println("Please make a valid selection.");
 		}
+		
 		return itemID;
 	}
 

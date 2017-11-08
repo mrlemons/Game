@@ -138,22 +138,63 @@ public class Inventory
 				itemID = getWeapon(itemPosition[choice]).getID();
 				if(hero.weaponEquip != null)
 				{
-					System.out.println("You dropped " + hero.weaponEquip.getName() + " and equiped " + getWeapon(itemID).getName() + "\n");
-					location.addWeaponHere(hero.weaponEquip);
+					if(inventorySlotsTaken < maxInventorySlots)
+					{
+						System.out.println("You equipped the " + getWeapon(itemID).getName() + " and " + hero.weaponEquip.getName() + " was added to your inventory.");
+						inventorySlotsTaken += 1;
+					}
+					else
+					{
+						System.out.println("You dropped " + hero.weaponEquip.getName() + " and equiped " + getWeapon(itemID).getName() + "\n");
+						location.addWeaponHere(hero.weaponEquip);
+						inventorySlotsTaken -= 1;
+					}
 					
 				}
 				else
 				{
 					System.out.println("You equipped the " + getWeapon(itemID).getName());
+					inventorySlotsTaken -= 1;
+					
 				}
+				
+				//Remove from inventory and equip
 				hero.setWeaponEquip(getWeapon(itemID));
-				currentInventory.remove(currentInventory.indexOf(itemID));
 				weapons.remove(weapons.indexOf(getWeapon(itemID)));
 			}
+			if(getArmor(itemPosition[choice]) != null)
+			{
+				itemID = getArmor(itemPosition[choice]).getID();
+				if(hero.armorEquip != null)
+				{
+					if(inventorySlotsTaken < maxInventorySlots)
+					{
+						System.out.println("You equipped the " + getArmor(itemID).getName() + " and " + hero.armorEquip.getName() + " was added to your inventory." );
+						inventorySlotsTaken += 1;
+					}
+					else
+					{
+					System.out.println("You dropped " + hero.armorEquip.getName() + " and equiped " + getArmor(itemID).getName() + "\n");
+					location.addArmorHere(hero.armorEquip);
+					inventorySlotsTaken -= 1;
+					}
+				}
+				else
+				{
+					System.out.println("You equipped the " + getArmor(itemID).getName());	
+					inventorySlotsTaken -= 1;
+				}
+				
+				//Remove from inventory and equip
+				hero.setArmorEquip(getArmor(itemID));
+				armors.remove(armors.indexOf(getArmor(itemID)));
+			}
+			//Remove from global inventory
+			currentInventory.remove(currentInventory.indexOf(itemID));
 		}
 		catch (IndexOutOfBoundsException e)
 		{
-			
+			System.out.println("Not a valid selection\n");
 		}
 		
 		
@@ -166,7 +207,7 @@ public class Inventory
 		int itemID = 0;
 		
 		
-		
+		//Draws and displays our compare screen
 		if(hero.getWeaponEquip() != null)
 		{
 			final Object[][] table = new String[6][];
@@ -196,7 +237,7 @@ public class Inventory
 		
 		if(hero.getWeaponEquip() == null)
 		{
-			System.out.println("Nothing Equiped\n");
+			System.out.println("Weapon: Nothing Equiped\n");
 		}
 		
 		if(hero.getWeaponEquip() != null)
@@ -213,6 +254,24 @@ public class Inventory
 					+ "Wisdom: " + hero.getWeaponEquip().getWisMod()  + "\n");
 		}
 		
+		if(hero.getArmorEquip() == null)
+		{
+			System.out.println("Armor: Nothing equipped.\n");
+		}
+		
+		if(hero.getArmorEquip() != null)
+		{
+			armorID = hero.getArmorEquip().getID();
+			System.out.println("Currently Equiped Armor: \n" 
+					+ hero.getArmorEquip().getName() + "\n"
+					+ hero.getArmorEquip().getDescription() + "\n"
+					+ "Modifiers: \n"
+					+ "Strength: " + hero.getArmorEquip().getStrMod() + "\n"
+					+ "Dex: " + hero.getArmorEquip().getDexMod() + "\n"
+					+ "Vitality: " + hero.getArmorEquip().getVitMod() + "\n"
+					+ "Intelligence: " + hero.getArmorEquip().getIntMod() + "\n"
+					+ "Wisdom: " + hero.getArmorEquip().getWisMod()  + "\n");
+		}
 	}
 	
 	//Print out all our items in our inventory
@@ -266,4 +325,26 @@ public class Inventory
 		}
 		return null;
 	}
+
+	public int getInventorySlotsTaken()
+	{
+		return inventorySlotsTaken;
+	}
+
+	public void setInventorySlotsTaken(int inventorySlotsTaken)
+	{
+		this.inventorySlotsTaken = inventorySlotsTaken;
+	}
+
+	public int getMaxInventorySlots()
+	{
+		return maxInventorySlots;
+	}
+
+	public void setMaxInventorySlots(int maxInventorySlots)
+	{
+		this.maxInventorySlots = maxInventorySlots;
+	}
+	
+	
 }

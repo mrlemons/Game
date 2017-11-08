@@ -104,9 +104,10 @@ public class World
 		westRoomFloorOne.setLocationToTheEast(southRoomFloorOne);
 		
 		//Add any weapons to location
+		southRoomFloorOne.addWeaponHere(getWeapon(WEAPON_ID_RUSTY_SWORD));
 	
-		roomStart.addWeaponHere(getWeapon(WEAPON_ID_RUSTY_SWORD));
-		roomStart.addWeaponHere(getWeapon(WEAPON_ID_OLD_BOW));
+		//Add any armors to location
+		southRoomFloorOne.addArmorHere(getArmor(ARMOR_ID_IRON_ARMOR));
 		
 		
 		

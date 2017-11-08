@@ -37,6 +37,23 @@ public class Hero
 		
 		
 	}
+	
+	public void setArmorEquip(Armor armor)
+	{
+		armorEquip = new Armor(armor.getID(), armor.getName(), armor.getDescription());
+		armorEquip.setStrMod(armor.getStrMod());
+		armorEquip.setDexMod(armor.getDexMod());
+		armorEquip.setVitMod(armor.getVitMod());
+		armorEquip.setIntMod(armor.getIntMod());
+		armorEquip.setWisMod(armor.getWisMod());
+		
+		//Add armor mods to our hero stats
+	}
+	
+	public Armor getArmorEquip()
+	{
+		return armorEquip;
+	}
 	public Weapon getWeaponEquip()
 	{
 		return weaponEquip;
