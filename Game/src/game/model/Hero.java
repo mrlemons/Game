@@ -8,11 +8,16 @@ public class Hero
 	private int vitality;
 	private int intelligence;
 	private int wisdom;
-	private int strMod;
-	private int dexMod;
-	private int vitMod;
-	private int intMod;
-	private int wisMod;
+	private int strWeapMod;
+	private int dexWeapMod;
+	private int vitWeapMod;
+	private int intWeapMod;
+	private int wisWeapMod;
+	private int strArmMod;
+	private int dexArmMod;
+	private int vitArmMod;
+	private int intArmMod;
+	private int wisArmMod;
 	
 	Weapon weaponEquip;
 	Armor armorEquip;
@@ -37,54 +42,62 @@ public class Hero
 		weaponEquip.setIntMod(weapon.getIntMod());
 		weaponEquip.setWisMod(weapon.getWisMod());
 		
-		//Add weapon mods to our hero stats
-		strMod += weaponEquip.getStrMod();
-		dexMod += weaponEquip.getDexMod();
-		vitMod += weaponEquip.getVitMod();
-		intMod += weaponEquip.getVitMod();
-		wisMod += weaponEquip.getWisMod();
-		
-		strength += strMod;
-		dex += dexMod;
-		vitality += vitMod;
-		intelligence += intMod;
-		wisdom += wisMod;
-		
-		
-		
+		setStats();
 	}
 	public void removeWeapon()
 	{
 		weaponEquip = null;
-		
-		strMod -= weaponEquip.getStrMod();
-		dexMod -= weaponEquip.getDexMod();
-		vitMod -= weaponEquip.getVitMod();
-		intMod -= weaponEquip.getVitMod();
-		wisMod -= weaponEquip.getWisMod();
-		
-		strength -= strMod;
-		dex -= dexMod;
-		vitality -= vitMod;
-		intelligence -= intMod;
-		wisdom -= wisMod;
+		setStats();
 	}
 	
 	public void removeArmor()
 	{
 		armorEquip = null;
-		strMod -= armorEquip.getStrMod();
-		dexMod -= armorEquip.getDexMod();
-		vitMod -= armorEquip.getVitMod();
-		intMod -= armorEquip.getVitMod();
-		wisMod -= armorEquip.getWisMod();
-		
-		strength -= strMod;
-		dex -= dexMod;
-		vitality -= vitMod;
-		intelligence -= intMod;
-		wisdom -= wisMod;
+		setStats();
 	}
+	public void setStats()
+	{
+		if(weaponEquip == null)
+		{
+			strWeapMod = 0;
+			dexWeapMod = 0;
+			vitWeapMod = 0;
+			intWeapMod = 0;
+			wisWeapMod = 0;
+		}
+		else if(armorEquip == null)
+		{
+			strArmMod = 0;
+			dexArmMod = 0;
+			vitArmMod = 0;
+			intArmMod = 0;
+			wisArmMod = 0;
+		}
+		else if(weaponEquip != null)
+		{
+			strWeapMod = weaponEquip.getStrMod();
+			dexWeapMod = weaponEquip.getDexMod();
+			vitWeapMod = weaponEquip.getVitMod();
+			intWeapMod = weaponEquip.getVitMod();
+			wisWeapMod = weaponEquip.getWisMod();
+		}
+		else if(armorEquip != null)
+		{
+			strArmMod = weaponEquip.getStrMod();
+			dexArmMod = weaponEquip.getDexMod();
+			vitArmMod = weaponEquip.getVitMod();
+			intArmMod = weaponEquip.getVitMod();
+			wisArmMod = weaponEquip.getWisMod();
+		}
+		
+		strength = strength + strWeapMod + strArmMod; 
+		dex = dex + dexWeapMod + dexArmMod;
+		vitality = vitality + vitWeapMod + vitArmMod;
+		intelligence = intelligence + intWeapMod + intArmMod;
+		wisdom = wisdom + wisWeapMod + wisArmMod;
+			
+	}
+
 	
 	public void setArmorEquip(Armor armor)
 	{
@@ -95,18 +108,7 @@ public class Hero
 		armorEquip.setIntMod(armor.getIntMod());
 		armorEquip.setWisMod(armor.getWisMod());
 		
-		//Add armor mods to our hero stats
-		strMod += armorEquip.getStrMod();
-		dexMod += armorEquip.getDexMod();
-		vitMod += armorEquip.getVitMod();
-		intMod += armorEquip.getVitMod();
-		wisMod += armorEquip.getWisMod();
-		
-		strength += strMod;
-		dex += dexMod;
-		vitality += vitMod;
-		intelligence += intMod;
-		wisdom += wisMod;
+		setStats();
 	}
 
 	public Armor getArmorEquip()
@@ -177,47 +179,6 @@ public class Hero
 	{
 		this.wisdom = wisdom;
 	}
-	public int getStrMod()
-	{
-		return strMod;
-	}
-	public void setStrMod(int strMod)
-	{
-		this.strMod = strMod;
-	}
-	public int getDexMod()
-	{
-		return dexMod;
-	}
-	public void setDexMod(int dexMod)
-	{
-		this.dexMod = dexMod;
-	}
-	public int getVitMod()
-	{
-		return vitMod;
-	}
-	public void setVitMod(int vitMod)
-	{
-		this.vitMod = vitMod;
-	}
-	public int getIntMod()
-	{
-		return intMod;
-	}
-	public void setIntMod(int intMod)
-	{
-		this.intMod = intMod;
-	}
-	public int getWisMod()
-	{
-		return wisMod;
-	}
-	public void setWisMod(int wisMod)
-	{
-		this.wisMod = wisMod;
-	}
-	
 	
 	
 
