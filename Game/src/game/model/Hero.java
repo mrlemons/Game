@@ -18,6 +18,11 @@ public class Hero
 	private int vitArmMod;
 	private int intArmMod;
 	private int wisArmMod;
+	private int baseStr;
+	private int baseDex;
+	private int baseVit;
+	private int baseInt;
+	private int baseWis;
 	
 	Weapon weaponEquip;
 	Armor armorEquip;
@@ -32,6 +37,12 @@ public class Hero
 		this.vitality = vitality;
 		this.intelligence = intelligence;
 		this.wisdom = wisdom;
+		
+		baseStr = strength;
+		baseDex = dex;
+		baseVit = vitality;
+		baseInt = intelligence;
+		baseWis = wisdom;
 	}
 	public void setWeaponEquip(Weapon weapon)
 	{
@@ -90,11 +101,11 @@ public class Hero
 			wisArmMod = weaponEquip.getWisMod();
 		}
 		
-		strength = strength + strWeapMod + strArmMod; 
-		dex = dex + dexWeapMod + dexArmMod;
-		vitality = vitality + vitWeapMod + vitArmMod;
-		intelligence = intelligence + intWeapMod + intArmMod;
-		wisdom = wisdom + wisWeapMod + wisArmMod;
+		strength = baseStr + strWeapMod + strArmMod; 
+		dex = baseDex + dexWeapMod + dexArmMod;
+		vitality = baseVit + vitWeapMod + vitArmMod;
+		intelligence = baseInt + intWeapMod + intArmMod;
+		wisdom = baseWis + wisWeapMod + wisArmMod;
 			
 	}
 
