@@ -11,11 +11,6 @@ public class Location
 	private Location locationToTheWest;
 	private Location locationToTheEast;
 	
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> Lesson-2
 	public Location(int ID, String name, String description)
 	{
 		this.ID = ID;
@@ -88,11 +83,4 @@ public class Location
 	{
 		this.locationToTheEast = locationToTheEast;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> Lesson-2
-	
-	
-
 }
