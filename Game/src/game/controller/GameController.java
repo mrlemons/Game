@@ -437,7 +437,7 @@ public class GameController
 			}
 			if(hero.getArmorEquip() != null)
 			{
-				System.out.println("(2)" + hero.getArmorEquip() + "\n");
+				System.out.println("(2)" + hero.getArmorEquip().getName() + "\n");
 			}
 			if(hero.getArmorEquip() == null)
 			{
