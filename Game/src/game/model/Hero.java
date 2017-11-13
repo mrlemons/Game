@@ -76,7 +76,7 @@ public class Hero
 			intWeapMod = 0;
 			wisWeapMod = 0;
 		}
-		else if(armorEquip == null)
+		if(armorEquip == null)
 		{
 			strArmMod = 0;
 			dexArmMod = 0;
@@ -84,21 +84,21 @@ public class Hero
 			intArmMod = 0;
 			wisArmMod = 0;
 		}
-		else if(weaponEquip != null)
+		if(weaponEquip != null)
 		{
 			strWeapMod = weaponEquip.getStrMod();
 			dexWeapMod = weaponEquip.getDexMod();
 			vitWeapMod = weaponEquip.getVitMod();
-			intWeapMod = weaponEquip.getVitMod();
+			intWeapMod = weaponEquip.getIntMod();
 			wisWeapMod = weaponEquip.getWisMod();
 		}
-		else if(armorEquip != null)
+		if(armorEquip != null)
 		{
-			strArmMod = weaponEquip.getStrMod();
-			dexArmMod = weaponEquip.getDexMod();
-			vitArmMod = weaponEquip.getVitMod();
-			intArmMod = weaponEquip.getVitMod();
-			wisArmMod = weaponEquip.getWisMod();
+			strArmMod = armorEquip.getStrMod();
+			dexArmMod = armorEquip.getDexMod();
+			vitArmMod = armorEquip.getVitMod();
+			intArmMod = armorEquip.getIntMod();
+			wisArmMod = armorEquip.getWisMod();
 		}
 		
 		strength = baseStr + strWeapMod + strArmMod; 
