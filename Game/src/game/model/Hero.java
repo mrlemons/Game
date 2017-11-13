@@ -24,6 +24,12 @@ public class Hero
 	private int baseInt;
 	private int baseWis;
 	
+	private int hunger;
+	private int starvingLimit;
+	private int hungryLimit;
+	private int fineLimit;
+	private int maxHunger;
+	
 	Weapon weaponEquip;
 	Armor armorEquip;
 	
@@ -43,6 +49,57 @@ public class Hero
 		baseVit = vitality;
 		baseInt = intelligence;
 		baseWis = wisdom;
+		
+		maxHunger = 100;
+		starvingLimit = 25;
+		hungryLimit = 50;
+		fineLimit = 75;
+		hunger = maxHunger;
+	}
+	public void getHunger()
+	{
+		/*Four tiers of hunger.
+		 * 0-25: Starving
+		 * 26-50 Hungry
+		 * 51-75: Fine
+		 * 76-100: Full
+		 */
+		if(hunger >= starvingLimit)
+		{
+			System.out.print("You are starving.\n");
+		}
+		else if(hunger >= hungryLimit)
+		{
+			System.out.println("You are hungry.\n");
+		}
+		else if(hunger >= fineLimit)
+		{
+			System.out.println("You are fine.\n");
+		}
+		else if(hunger >= maxHunger)
+		{
+			System.out.println("You are full.\n");
+		}
+			
+	}
+	public void setHunger(boolean adding, int amount)
+	{
+		if(adding == true)
+		{
+			hunger += amount;
+			if(hunger >= maxHunger)
+			{
+				hunger = maxHunger;
+			}
+		}
+		else
+		{
+			hunger -= amount;
+			if(hunger >= 0)
+			{
+				hunger = 0;
+			}
+		}
 	}
 	public void setWeaponEquip(Weapon weapon)
 	{
@@ -101,6 +158,7 @@ public class Hero
 			wisArmMod = armorEquip.getWisMod();
 		}
 		
+		//Set our stats
 		strength = baseStr + strWeapMod + strArmMod; 
 		dex = baseDex + dexWeapMod + dexArmMod;
 		vitality = baseVit + vitWeapMod + vitArmMod;

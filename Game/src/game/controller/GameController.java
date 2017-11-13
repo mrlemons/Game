@@ -159,12 +159,8 @@ public class GameController
 	
 	public void viewStats() 
 	{
-		System.out.println("Name: " + hero.getName());
-		System.out.println("Strength: " + hero.getStrength());
-		System.out.println("Dex: " + hero.getDex());
-		System.out.println("Vitality: " + hero.getVitality());
-		System.out.println("Intelligence: " + hero.getIntelligence());
-		System.out.println("Wisdom: " + hero.getWisdom());
+		final Object[][] table = new String[6][];
+		table[0] = new String[] {"Base Stats", "Weapon Mod", "Armor Mod", "Total Stat"};
 	}
 
 	public void move()
@@ -450,5 +446,9 @@ public class GameController
 		{
 			manageInventory();
 		}
+	}
+	public void manageAction()
+	{
+		
 	}
 }
