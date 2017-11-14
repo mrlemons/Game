@@ -70,7 +70,7 @@ public class Hero
 	{
 		if(armorEquip != null)
 		{
-			armorRating = baseAR + dex + armorEquip.getDexMod() + armorEquip.getVitMod();
+			armorRating = baseAR + armorEquip.getDexMod() + armorEquip.getVitMod();
 		}
 		else
 		{

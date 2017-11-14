@@ -512,6 +512,8 @@ public class GameController
 	}
 	public void manageAction()
 	{
-		
+		//Will be used to manage our action system. Will come back to this.
 	}
+	
+	
 }
