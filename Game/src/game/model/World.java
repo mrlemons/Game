@@ -9,6 +9,7 @@ public class World
 	ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 	ArrayList<Armor> armors = new ArrayList<Armor>();
 	ArrayList<Location> locations = new ArrayList<Location>();
+	ArrayList<Monster> monsters = new ArrayList<Monster>();
 	
 	
 	
@@ -27,6 +28,12 @@ public class World
 	public final int LOCATION_ID_ROOM_START = 601;
 	public final int LOCATION_ID_SOUTH_ROOM_FLOOR_ONE = 602;
 	public final int LOCATION_ID_WEST_ROOM_FLOOR_ONE = 603;
+	
+	//Monsters ID's 801 - 1000
+	public final int MONSTER_ID_RAT = 801;
+	
+	
+	//Items ID's 1001 - 2000
 	
 	public World() 
 	{
@@ -120,6 +127,15 @@ public class World
 		
 	}
 	
+	public void populateMonsters()
+	{
+		//int ID, String name, String description, int attack, int defense, int health, String attackType
+		Monster rat = new Monster(MONSTER_ID_RAT, "Rat", "A feral rat", 10, 22, 80, "physical");
+		
+		//Add monsters to list
+		monsters.add(rat);
+	}
+	
 	//Search for weapons
 	public Weapon getWeapon(int weaponID)
 	{
@@ -155,6 +171,19 @@ public class World
 			if(location.getID() == locationID)
 			{
 				return location;
+			}
+		}
+		return null;
+	}
+	
+	//Search for monsters
+	public Monster getMonsters(int monsterID)
+	{
+		for(Monster monster : monsters)
+		{
+			if(monster.getID() == monsterID)
+			{
+				return monster;
 			}
 		}
 		return null;
