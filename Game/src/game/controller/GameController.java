@@ -159,8 +159,68 @@ public class GameController
 	
 	public void viewStats() 
 	{
-		final Object[][] table = new String[6][];
-		table[0] = new String[] {"Base Stats", "Weapon Mod", "Armor Mod", "Total Stat"};
+		if(hero.getWeaponEquip() != null && hero.getArmorEquip() != null)
+		{
+			final Object[][] table = new String[6][];
+			table[0] = new String[] {"Stat", "Base Stat", "Weapon Mod", "Armor Mod", "Total Stat"};
+			table[1] = new String[] {"Strength:", 		Integer.toString(startingStrength), 	Integer.toString(hero.getWeaponEquip().getStrMod()), 	Integer.toString(hero.getArmorEquip().getStrMod()), 	Integer.toString(hero.getStrength())};
+			table[2] = new String[] {"Dexterity:", 		Integer.toString(startingDex), 			Integer.toString(hero.getWeaponEquip().getDexMod()), 	Integer.toString(hero.getArmorEquip().getDexMod()), 	Integer.toString(hero.getDex())};
+			table[3] = new String[] {"Vitality:", 		Integer.toString(startingVitality), 	Integer.toString(hero.getWeaponEquip().getVitMod()), 	Integer.toString(hero.getArmorEquip().getVitMod()), 	Integer.toString(hero.getVitality())};
+			table[4] = new String[] {"Intelligence:", 	Integer.toString(startingIntelligence), Integer.toString(hero.getWeaponEquip().getIntMod()), 	Integer.toString(hero.getArmorEquip().getIntMod()), 	Integer.toString(hero.getIntelligence())};
+			table[5] = new String[] {"Wisdom: ", 		Integer.toString(startingWisdom), 		Integer.toString(hero.getWeaponEquip().getWisMod()), 	Integer.toString(hero.getArmorEquip().getWisMod()), 	Integer.toString(hero.getWisdom())};
+			
+			for(final Object[] row : table)
+			{
+				System.out.format("%-25s%-25s%-25s%-25s%-25s\n", row);
+			}
+		}
+		if(hero.getWeaponEquip() == null && hero.getArmorEquip() != null)
+		{
+			final Object[][] table = new String[6][];
+			table[0] = new String[] {"Stat", "Base Stat", "Weapon Mod", "Armor Mod", "Total Stat"};
+			table[1] = new String[] {"Strength:", Integer.toString(startingStrength), 			"-", 	Integer.toString(hero.getArmorEquip().getStrMod()), 	Integer.toString(hero.getStrength())};
+			table[2] = new String[] {"Dexterity:", Integer.toString(startingDex), 				"-", 	Integer.toString(hero.getArmorEquip().getDexMod()), 	Integer.toString(hero.getDex())};
+			table[3] = new String[] {"Vitality:", Integer.toString(startingVitality), 			"-", 	Integer.toString(hero.getArmorEquip().getVitMod()), 	Integer.toString(hero.getVitality())};
+			table[4] = new String[] {"Intelligence:", Integer.toString(startingIntelligence), 	"-", 	Integer.toString(hero.getArmorEquip().getIntMod()), 	Integer.toString(hero.getIntelligence())};
+			table[5] = new String[] {"Wisdom: ", Integer.toString(startingWisdom), 				"-", 	Integer.toString(hero.getArmorEquip().getWisMod()), 	Integer.toString(hero.getWisdom())};
+			
+			for(final Object[] row : table)
+			{
+				System.out.format("%-25s%-25s%-25s%-25s%-25s\n", row);
+			}
+		}
+		if(hero.getWeaponEquip() != null && hero.getArmorEquip() == null)
+		{
+			final Object[][] table = new String[6][];
+			table[0] = new String[] {"Stat", "Base Stat", "Weapon Mod", "Armor Mod", "Total Stat"};
+			table[1] = new String[] {"Strength:", 		Integer.toString(startingStrength), 	Integer.toString(hero.getWeaponEquip().getStrMod()), 	"-", 	Integer.toString(hero.getStrength())};
+			table[2] = new String[] {"Dexterity:", 		Integer.toString(startingDex), 			Integer.toString(hero.getWeaponEquip().getDexMod()), 	"-", 	Integer.toString(hero.getDex())};
+			table[3] = new String[] {"Vitality:", 		Integer.toString(startingVitality), 	Integer.toString(hero.getWeaponEquip().getVitMod()), 	"-", 	Integer.toString(hero.getVitality())};
+			table[4] = new String[] {"Intelligence:", 	Integer.toString(startingIntelligence), Integer.toString(hero.getWeaponEquip().getIntMod()), 	"-", 	Integer.toString(hero.getIntelligence())};
+			table[5] = new String[] {"Wisdom: ", 		Integer.toString(startingWisdom), 		Integer.toString(hero.getWeaponEquip().getWisMod()), 	"-", 	Integer.toString(hero.getWisdom())};
+			
+			for(final Object[] row : table)
+			{
+				System.out.format("%-25s%-25s%-25s%-25s%-25s\n", row);
+			}
+		}
+		if(hero.getWeaponEquip() == null && hero.getArmorEquip() == null)
+		{
+			final Object[][] table = new String[6][];
+			table[0] = new String[] {"Stat", "Base Stat", "Weapon Mod", "Armor Mod", "Total Stat"};
+			table[1] = new String[] {"Strength:", 		Integer.toString(startingStrength), 	"-", 	"-", 	Integer.toString(hero.getStrength())};
+			table[2] = new String[] {"Dexterity:", 		Integer.toString(startingDex), 			"-", 	"-", 	Integer.toString(hero.getDex())};
+			table[3] = new String[] {"Vitality:", 		Integer.toString(startingVitality), 	"-", 	"-", 	Integer.toString(hero.getVitality())};
+			table[4] = new String[] {"Intelligence:", 	Integer.toString(startingIntelligence), "-", 	"-", 	Integer.toString(hero.getIntelligence())};
+			table[5] = new String[] {"Wisdom: ", 		Integer.toString(startingWisdom), 		"-", 	"-", 	Integer.toString(hero.getWisdom())};
+			
+			for(final Object[] row : table)
+			{
+				System.out.format("%-25s%-25s%-25s%-25s%-25s\n", row);
+			}
+
+		}
+		
 	}
 
 	public void move()
