@@ -159,6 +159,9 @@ public class GameController
 	
 	public void viewStats() 
 	{
+		hero.getHunger();
+		System.out.println("\n");
+		System.out.println("Health: " + hero.getHealth() + "\n");
 		if(hero.getWeaponEquip() != null && hero.getArmorEquip() != null)
 		{
 			final Object[][] table = new String[6][];

@@ -30,6 +30,13 @@ public class Hero
 	private int fineLimit;
 	private int maxHunger;
 	
+	private int health;
+	private int baseHealth;
+	private int mana;
+	
+	private int armorRating;
+	private int baseAR;
+	
 	Weapon weaponEquip;
 	Armor armorEquip;
 	
@@ -55,6 +62,29 @@ public class Hero
 		hungryLimit = 50;
 		fineLimit = 75;
 		hunger = maxHunger;
+		
+		baseHealth = 60;
+		baseAR = 10;
+	}
+	public void setArmorRating()
+	{
+		if(armorEquip != null)
+		{
+			armorRating = baseAR + dex + armorEquip.getDexMod() + armorEquip.getVitMod();
+		}
+		else
+		{
+			armorRating = baseAR;
+		}
+	}
+	public void setHealth()
+	{
+		health = vitality * 4 + baseHealth;
+	}
+	public int getHealth()
+	{
+		setHealth();
+		return health;
 	}
 	public void getHunger()
 	{
@@ -64,19 +94,19 @@ public class Hero
 		 * 51-75: Fine
 		 * 76-100: Full
 		 */
-		if(hunger >= starvingLimit)
+		if(hunger <= starvingLimit)
 		{
 			System.out.print("You are starving.\n");
 		}
-		else if(hunger >= hungryLimit)
+		else if(hunger <= hungryLimit)
 		{
 			System.out.println("You are hungry.\n");
 		}
-		else if(hunger >= fineLimit)
+		else if(hunger <= fineLimit)
 		{
 			System.out.println("You are fine.\n");
 		}
-		else if(hunger >= maxHunger)
+		else if(hunger <= maxHunger)
 		{
 			System.out.println("You are full.\n");
 		}
