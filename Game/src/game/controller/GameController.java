@@ -55,6 +55,7 @@ public class GameController
 	private int startingVitality;
 	private int startingIntelligence;
 	private int startingWisdom;
+	private int actionCost;
 	
 	Hero hero;
 	Inventory inventory;
@@ -162,6 +163,7 @@ public class GameController
 		hero.getHunger();
 		System.out.println("\n");
 		System.out.println("Health: " + hero.getHealth() + "\n");
+		System.out.println("Armor Rating: " + hero.getArmorRating() + "\n");
 		if(hero.getWeaponEquip() != null && hero.getArmorEquip() != null)
 		{
 			final Object[][] table = new String[6][];

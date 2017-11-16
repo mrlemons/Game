@@ -77,6 +77,11 @@ public class Hero
 			armorRating = baseAR;
 		}
 	}
+	public int getArmorRating()
+	{
+		setArmorRating();
+		return armorRating;
+	}
 	public void setHealth()
 	{
 		health = vitality * 4 + baseHealth;

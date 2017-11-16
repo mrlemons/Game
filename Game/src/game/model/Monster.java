@@ -9,9 +9,10 @@ public class Monster
 	private int defense;
 	private int health;
 	private String attackType;
+	private int speed;
 	
 	public Monster(int ID, String name, String description, int attack, int defense, int health, 
-					String attackType)
+					String attackType, int speed)
 	{
 		this.ID = ID;
 		this.name = name;
@@ -20,6 +21,7 @@ public class Monster
 		this.defense = defense;
 		this.health = health;
 		this.attackType = attackType;
+		this.speed = speed;
 	}
 	
 	public int getID()
@@ -61,6 +63,31 @@ public class Monster
 	public void setDefense(int defense)
 	{
 		this.defense = defense;
+	}
+
+	public int getHealth()
+	{
+		return health;
+	}
+
+	public void setHealth(int health)
+	{
+		this.health = health;
+	}
+
+	public int getSpeed()
+	{
+		return speed;
+	}
+
+	public void setSpeed(int speed)
+	{
+		this.speed = speed;
+	}
+
+	public String getAttackType()
+	{
+		return attackType;
 	}
 	
 	

@@ -16,6 +16,7 @@ public class Location
 	ArrayList<Weapon> weaponsHere = new ArrayList<Weapon>();
 	ArrayList<Armor> armorsHere = new ArrayList<Armor>();
 	ArrayList<Integer> itemsHere = new ArrayList<Integer>();
+	ArrayList<Monster> monstersHere = new ArrayList<Monster>();
 	
 
 	public Location(int ID, String name, String description)
@@ -189,5 +190,11 @@ public class Location
 		
 		return itemID;
 	}
+	
+	public void addMonsterHere(Monster monster)
+	{
+		monstersHere.add(monster);
+	}
+
 
 }

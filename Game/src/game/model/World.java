@@ -116,6 +116,9 @@ public class World
 		//Add any armors to location
 		southRoomFloorOne.addArmorHere(getArmor(ARMOR_ID_IRON_ARMOR));
 		
+		//Add monsters to the location
+		southRoomFloorOne.addMonsterHere(getMonster(MONSTER_ID_RAT));
+		
 		
 		
 		//Add location to list
@@ -129,8 +132,8 @@ public class World
 	
 	public void populateMonsters()
 	{
-		//int ID, String name, String description, int attack, int defense, int health, String attackType
-		Monster rat = new Monster(MONSTER_ID_RAT, "Rat", "A feral rat", 10, 22, 80, "physical");
+		//int ID, String name, String description, int attack, int defense, int health, String attackType, int speed
+		Monster rat = new Monster(MONSTER_ID_RAT, "Rat", "A feral rat", 10, 22, 80, "physical", 8);
 		
 		//Add monsters to list
 		monsters.add(rat);
@@ -177,7 +180,7 @@ public class World
 	}
 	
 	//Search for monsters
-	public Monster getMonsters(int monsterID)
+	public Monster getMonster(int monsterID)
 	{
 		for(Monster monster : monsters)
 		{
