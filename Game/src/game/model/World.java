@@ -51,18 +51,22 @@ public class World
 		//int ID, String name, String description
 		Location roomStart = new Location(LOCATION_ID_ROOM_START, "Damp Dungeon", "A very dark dungeon. Damp and cold. You figure you must be "
 											+ "very deep under the earth.");
-		Location southFloorRoomOne = new Location(LOCATION_ID_SOUTH_ROOM_FLOOR_ONE, "South Room", "This room is dark however, you see a pile of bones and what you think maybe be something made of iron in the corner.");
+		Location southRoomFloorOne = new Location(LOCATION_ID_SOUTH_ROOM_FLOOR_ONE, "South Room", "This room is dark however, you see a pile of bones and what you think maybe be something made of iron in the corner.");
 		
 		//Set all reachable locations
 		roomStart.setLocationToTheNorth(null);
-		roomStart.setLocationToTheSouth(southFloorRoomOne);
+		roomStart.setLocationToTheSouth(southRoomFloorOne);
 		roomStart.setLocationToTheWest(null);
 		roomStart.setLocationToTheEast(null);
 		
+		southRoomFloorOne.setLocationToTheNorth(roomStart);
+		southRoomFloorOne.setLocationToTheSouth(null);
+		southRoomFloorOne.setLocationToTheWest(null);
+		southRoomFloorOne.setLocationToTheEast(null);
 		
 		//Add location to list
 		locations.add(roomStart);
-		locations.add(southFloorRoomOne);
+		locations.add(southRoomFloorOne);
 		
 		
 	}
