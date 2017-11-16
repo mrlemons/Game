@@ -19,14 +19,25 @@ public class BattleSystem
 		
 		Random RNG = new Random();
 		
-		int speedModifier;
+		double speedModifier;
 		int heroSpeed;
 		int monsterSpeed;
+		double result;
 		
-		heroSpeed = RNG.nextInt(3) + 1;
-		heroSpeed = 10 / heroSpeed;
+		//Get hero speed
+		heroSpeed = hero.getDex();
+		speedModifier = RNG.nextInt(6) + 1;
+		result = speedModifier / 10;
+		heroSpeed = (int) (heroSpeed + speedModifier);
 		
-		heroSpeed = heroSpeed 
+		//Get monster speed
+		monsterSpeed = monster.getSpeed();
+		speedModifier = RNG.nextInt(6) + 1;
+		result = speedModifier / 10;
+		monsterSpeed = (int)(monsterSpeed + speedModifier);
+		
+		System.out.println(heroSpeed);
+		System.out.println(monsterSpeed);
 		
 		
 		

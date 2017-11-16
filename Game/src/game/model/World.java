@@ -43,6 +43,7 @@ public class World
 		populateWeapons();
 		populateArmors();
 		populateLocations();
+		populateMonsters();
 	}
 	
 	public static World getWorld()

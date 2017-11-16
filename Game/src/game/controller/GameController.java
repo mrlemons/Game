@@ -2,6 +2,7 @@ package game.controller;
 
 import java.util.Scanner;
 
+import game.model.BattleSystem;
 import game.model.Hero;
 import game.model.Inventory;
 import game.model.Location;
@@ -154,6 +155,11 @@ public class GameController
 		if(userChoice == MENU.INVENTORY.getMenuNumber())
 		{
 			manageInventory();
+		}
+		if(userChoice == 8)
+		{
+			BattleSystem battle = new BattleSystem();
+			battle.whoGoesFirst(hero, theWorld.getMonster(theWorld.MONSTER_ID_RAT));
 		}
 		
 	}
