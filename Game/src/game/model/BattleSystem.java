@@ -12,12 +12,17 @@ public class BattleSystem
 	public void doBattle(Hero hero, Monster monster) 
 	{
 		//See who goes first
-		if(whoGoesFirst(hero, monster) == true)
+		if(whoGoesFirst(hero, monster) == false)
 		{
-			
+			processEnemyAttack();
 		}
 		//Deal damage
 		//Get results 
+	}
+	
+	public void processEnemyAttack()
+	{
+		
 	}
 	public Boolean whoGoesFirst(Hero hero, Monster monster)
 	{
