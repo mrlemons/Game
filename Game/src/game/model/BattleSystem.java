@@ -7,18 +7,22 @@ public class BattleSystem
 	boolean playerTurn;
 	boolean monsterTurn;
 	
+	Random RNG = new Random();
+	
 	public void doBattle(Hero hero, Monster monster) 
 	{
 		//See who goes first
+		if(whoGoesFirst(hero, monster) == true)
+		{
+			
+		}
 		//Deal damage
 		//Get results 
 	}
 	public Boolean whoGoesFirst(Hero hero, Monster monster)
 	{
 		boolean isPlayerFirst = false;
-		
-		Random RNG = new Random();
-		
+
 		double speedModifier;
 		int heroSpeed;
 		int monsterSpeed;
@@ -36,10 +40,14 @@ public class BattleSystem
 		result = speedModifier / 10;
 		monsterSpeed = (int)(monsterSpeed + speedModifier);
 		
-		System.out.println(heroSpeed);
-		System.out.println(monsterSpeed);
-		
-		
+		if(heroSpeed > monsterSpeed)
+		{
+			isPlayerFirst = true;
+		}
+		else
+		{
+			isPlayerFirst = false;
+		}
 		
 		return isPlayerFirst;
 	}
