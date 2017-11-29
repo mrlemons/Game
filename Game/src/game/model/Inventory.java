@@ -61,7 +61,61 @@ public class Inventory
 		}
 	}
 	
-	//Work on selectItem method
+	public void selectItem(int choice)
+	{
+		choice = choice - 1;
+		
+		if(getWeapon(slot[choice]) != null)
+		{
+			System.out.println("\n"
+								+ "Name: " + getWeapon(slot[choice]).getName() + "\n"
+								+ "Description: " + getWeapon(slot[choice]).getDescription() + "\n");
+		}
+		else if(getArmor(slot[choice]) != null)
+		{
+			System.out.println("\n"
+					+ "Name: " + getArmor(slot[choice]).getName() + "\n"
+					+ "Description: " + getArmor(slot[choice]).getDescription() + "\n");
+		}
+	}
+	
+	public Weapon getWeapon(int ID)
+	{
+		for(Weapon weapon : weapons)
+		{
+			if(weapon.getID() == ID)
+			{
+				return weapon;
+			}
+		}
+		return null;
+	}
+	
+	public Armor getArmor(int ID)
+	{
+		for(Armor armor : armors)
+		{
+			if(armor.getID() == ID)
+			{
+				return armor;
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
