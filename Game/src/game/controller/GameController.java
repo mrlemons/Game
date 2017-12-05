@@ -3,11 +3,38 @@ package game.controller;
 import java.util.Scanner;
 
 import game.model.Hero;
+import game.model.Inventory;
 import game.model.Location;
 import game.model.World;
 
 public class GameController
 {
+	public enum MENU
+	{
+		VIEWSTATS(1),
+		LOOKAROUND(2),
+		MOVE(3),
+		REST(4),
+		EAT(5),
+		INVENTORY(6),
+			VIEWITEM(1),
+			EQUIP(2),
+			USEITEM(3),
+			GOBACK(4);
+		
+		private int menuNumber;
+		
+		private MENU(int number)
+		{
+			this.menuNumber = number;
+		}
+		
+		public int getMenuNumber()
+		{
+			return menuNumber;
+		}
+	}
+	
 	Scanner input = new Scanner(System.in);
 	
 	private String heroName;
@@ -23,8 +50,15 @@ public class GameController
 	
 	Hero hero;
 	World theWorld = World.getWorld();
+	Inventory inventory;
+	MENU menu;
 	
 	private Location currentLocation;
+	
+	public GameController(MENU menu)
+	{
+		this.menu = menu;
+	}
 	
 	public GameController()
 	{
@@ -36,6 +70,8 @@ public class GameController
 		
 		hero = new Hero("Link", startingStrength, startingDex, startingVitality,
 						startingIntelligence, startingWisdom);
+		
+		inventory = new Inventory();
 		
 		beginGame();
 	}
@@ -69,32 +105,43 @@ public class GameController
 		//The main game
 		while (gameOn = true)
 		{
-			System.out.println("\n"
-					+ "Make a choice:\n"
-					+ "(1)View Stats\n"
-					+ "(2)Look Around\n"
-					+ "(3)Move\n"
-					+ "(4)Rest\n"
-					+ "(5)Eat\n"
-					+ "(6)View Inventory\n");
-			userChoice = input.nextInt();
-			
-			switch(userChoice)
-			{
-				case 1:
-					viewStats();
-					break;
-				case 2:
-					System.out.println(currentLocation.getName() + " \n" + currentLocation.getDescription());
-					break;
-				case 3:
-					move();
-					break;
-			}
+			setMenuState();
 		}
+	}
+	
+	public void setMenuState()
+	{
+		System.out.println("\n"
+				+ "Make a choice:\n"
+				+ "(1)View Stats\n"
+				+ "(2)Look Around\n"
+				+ "(3)Move\n"
+				+ "(4)Rest\n"
+				+ "(5)Eat\n"
+				+ "(6)View Inventory\n");
+		userChoice = input.nextInt();
 		
-		
-
+		//Control the menu state
+		if(userChoice == MENU.VIEWSTATS.getMenuNumber())
+		{
+			viewStats();
+		}
+		if(userChoice == MENU.LOOKAROUND.getMenuNumber())
+		{
+			//lookAround();
+		}
+		if(userChoice == MENU.MOVE.getMenuNumber())
+		{
+			move();
+		}
+		if(userChoice == MENU.INVENTORY.getMenuNumber())
+		{
+			//manageInventory();
+		}
+		else
+		{
+			System.out.println("Not a valid choice\n");
+		}
 	}
 	
 	public void viewStats() 
